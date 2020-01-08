@@ -1,0 +1,6 @@
+---
+
+- hosts: ubuntu_at_work
+  vars_files:
+    - group_vars/ubuntu.yml
+    - group_vars/ubuntu_at_work.yml
