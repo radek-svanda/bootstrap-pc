@@ -6,3 +6,4 @@
     - group_vars/ubuntu_at_work.yml
   roles:
     - role: gantsign.ctop
+    - role: intellij

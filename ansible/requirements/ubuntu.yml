@@ -3,3 +3,4 @@
 # https://github.com/gantsign/ansible_role_sdkman_init
 # https://github.com/gantsign/ansible_role_ctop
 - src: gantsign.ctop
+- src: gantsign.intellij
