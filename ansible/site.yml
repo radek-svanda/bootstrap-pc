@@ -4,3 +4,5 @@
   vars_files:
     - group_vars/ubuntu.yml
     - group_vars/ubuntu_at_work.yml
+  roles:
+    - role: gantsign.ctop
