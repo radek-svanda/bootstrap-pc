@@ -1,0 +1,5 @@
+---
+
+- name: configure bash prompt
+  include_tasks: bash-prompt.yml
+  when: git_bash_prompt|default(false)|bool == true
