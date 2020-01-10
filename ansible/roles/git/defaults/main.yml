@@ -1,3 +1,4 @@
 ---
 
 git_bash_prompt: yes
+git_bash_fallback: yes

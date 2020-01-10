@@ -1,0 +1,11 @@
+---
+
+- name: configure bash fallback
+  blockinfile:
+    path: '{{ user_home_dir }}/.bashrc'
+    marker: '# {mark} GIT BASH FALLBACK'
+    block: |
+      function command_not_found_handle {
+        echo "Command '$1' not found, trying git command"
+        git $@
+      }
