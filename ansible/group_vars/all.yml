@@ -1,3 +1,5 @@
 email: '{{ ansible_env.USER }}@localhost'
 full_name: '{{ ansible_env.USER }}'
 user_name: '{{ ansible_env.USER }}'
+
+edition: '{{ansible_distribution | lower}}'

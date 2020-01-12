@@ -9,5 +9,3 @@
     - role: gantsign.ctop
     - role: intellij
     - role: git
-  # tasks:
-    # - debug: var=ansible_env

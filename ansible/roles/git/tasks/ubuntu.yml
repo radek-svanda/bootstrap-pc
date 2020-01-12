@@ -1,0 +1,9 @@
+---
+
+- name: configure bash prompt
+  include_tasks: bash-prompt.yml
+  when: git_bash_prompt|default(false)|bool == true
+
+- name: configure bash fallback
+  include_tasks: bash-fallback.yml
+  when: git_bash_fallback|default(false)|bool == true
