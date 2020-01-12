@@ -3,4 +3,54 @@ ansible_connection: local
 packages:
   - name: apt-transport-https
   - name: aptitude
+  - name: ca-certificates
+  - name: calibre
+  - name: curl
   - name: jq
+  - name: default-jre
+  - name: dos2unix
+  - name: dconf-editor
+  - name: firefox
+  - name: gnupg-agent
+  - name: gnome-calculator
+  - name: gnome-photos
+  - name: gnome-software-plugin-flatpak
+  - name: gnome-shell-extension-desktop-icons
+    state: absent
+  - name: yelp
+    state: absent
+  - name: htop
+  - name: libreoffice
+  - name: pinta
+  - name: software-properties-common
+  - name: virtualbox
+  - name: vagrant
+  - name: xdotool
+  - name: net-tools
+
+  # repo esample:
+  # - name: spotify-client
+  #   key: https://download.spotify.com/debian/pubkey.gpg
+  #   repo: deb http://repository.spotify.com stable non-free
+
+  - name: ulauncher
+    ppa: ppa:agornostal/ulauncher
+
+flatpak_remotes:
+  - name: flathub
+    url: https://flathub.org/repo/flathub.flatpakrepo
+
+flatpaks:
+  - name: com.spotify.Client
+  - name: com.github.calo001.fondo
+  - name: com.getpostman.Postman
+  - name: com.slack.Slack
+
+snaps:
+  - name: gnome-logs
+    state: absent
+  - name: gnome-calculator
+    state: absent
+  - name: gnome-characters
+    state: absent
+  - name: rambox

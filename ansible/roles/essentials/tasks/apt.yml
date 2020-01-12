@@ -1,0 +1,27 @@
+
+- name: add repository keys
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ repo_keys }}"
+
+- name: add repository urls
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: yes
+  become: yes
+  with_items: "{{ repo_urls }}"
+
+- name: add ppa repositories
+  apt_repository: repo="{{ item }}"
+  with_items: "{{ ppa_repos }}"
+  become: yes
+
+- name: install apt packages
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ packages }}"
+  become: yes

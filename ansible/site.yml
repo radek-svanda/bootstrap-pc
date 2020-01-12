@@ -9,3 +9,4 @@
     - role: gantsign.ctop
     - role: intellij
     - role: git
+    - role: essentials
