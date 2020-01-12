@@ -4,7 +4,10 @@
   vars_files:
     - group_vars/ubuntu.yml
     - group_vars/ubuntu_at_work.yml
+    - secrets.yml
   roles:
     - role: gantsign.ctop
     - role: intellij
     - role: git
+  # tasks:
+    # - debug: var=ansible_env

@@ -1,9 +1,5 @@
 ansible_connection: local
 
-email: radek.svanda@elder.cz
-full_name: Radek Svanda
-user_name: radek
-
 packages:
   - name: apt-transport-https
   - name: aptitude
