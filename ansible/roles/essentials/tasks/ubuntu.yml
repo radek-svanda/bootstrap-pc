@@ -1,3 +1,4 @@
 
 # - include_vars: 'ubuntu.yml'
 - include_tasks: apt.yml
+- include_tasks: flatpak.yml

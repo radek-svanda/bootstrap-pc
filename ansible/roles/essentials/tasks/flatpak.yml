@@ -1,0 +1,25 @@
+
+- name: install flatpak
+  apt: name=flatpak state=present
+  become: yes
+
+- name: add flathub
+  flatpak_remote:
+    flatpakrepo_url: "https://flathub.org/repo/flathub.flatpakrepo"
+    name: "flathub"
+  become: yes
+
+- name: add flatpak remotes
+  flatpak_remote:
+    flatpakrepo_url: "{{ item.url }}"
+    name: "{{ item.name }}"
+  with_items: "{{ flatpak_remotes }}"
+  become: yes
+
+- name: install flatpak packages
+  flatpak:
+    name: "{{ item.name }}"
+    remote: "{{ item.remote.name | default('flathub') }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ flatpak_packages }}"
+  become: yes

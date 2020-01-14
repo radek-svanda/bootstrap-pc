@@ -36,21 +36,26 @@ packages:
   - name: ulauncher
     ppa: ppa:agornostal/ulauncher
 
-flatpak_remotes:
-  - name: flathub
-    url: https://flathub.org/repo/flathub.flatpakrepo
-
 flatpaks:
-  - name: com.spotify.Client
-  - name: com.github.calo001.fondo
   - name: com.getpostman.Postman
+  - name: com.github.calo001.fondo
+  - name: com.skype.Client
   - name: com.slack.Slack
+  - name: com.spotify.Client
+  - name: com.toggl.TogglDesktop
 
 snaps:
+  - name: rambox
+  # remove preinstalled
   - name: gnome-logs
     state: absent
   - name: gnome-calculator
     state: absent
   - name: gnome-characters
     state: absent
-  - name: rambox
+
+debs:
+  - name: keeweb-desktop
+    url: https://github.com/keeweb/keeweb/releases/download/v1.11.6/KeeWeb-1.11.6.linux.x64.deb
+  - name: google-chrome-stable
+    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
