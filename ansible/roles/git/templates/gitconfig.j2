@@ -1,0 +1,79 @@
+[alias]
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg1solarized = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(dim white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    mylog = log --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --author='{{ full_name }}'
+    branch-diff = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(dim white)- %an%C(reset) %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    lg = !git lg1solarized
+    st = status
+    co = checkout
+    ci = commit
+    cbr = checkout -b
+    br = branch -vv
+    ignore = update-index --assume-unchanged
+    notice = update-index --no-assume-unchanged
+    list-ignored = !git ls-files -v | grep ^h
+    dt = difftool
+    clean-orig = !git status -su | grep '\\.orig$' | cut -f2 -d' ' | xargs rm -r
+    clean-rebase = !git status -su | grep -E '(_(LOCAL|REMOTE|BASE|BACKUP)_|.orig$)' | awk '{ print $2 }' | xargs rm
+    clean-versions = !git status -su | grep '\\.versionsBackup$' | cut -f2 -d' ' | xargs rm -r
+    clean-release = !git status -su | grep '\\.releaseBackup$' | cut -f2 -d' ' | xargs rm -r
+    rebase-reset = !git status -su | grep -E '(_(LOCAL|REMOTE|BASE|BACKUP)_|.orig$)' | cut -d' ' -f2 | xargs git reset HEAD
+    delete-merged = !git branch -d $(git branch | grep -v '\\*')
+    clean-branches = !git fetch --prune && git delete-merged
+    pick = cherry-pick
+    update-develop = !git pull --prune && git merge origin/develop || git mergetool
+    update-master = !git pull --prune && git merge origin/master || git mergetool
+    rename = "!f() { git push origin origin/$1:refs/heads/$2 :$1; } ; f"
+    recent-plain = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format=\"%(refname:short) - %(contents:lines=1)\"
+    recent = "for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%1B[0;33m%(refname:short) %1B[m - %(contents:lines=1)  %(color:blue)%(authordate:relative)'"
+    overview = log --all --oneline --no-merges --since=\"2 weeks\"
+    recap = log --all --oneline --no-merges --author={{ email }}
+    graph = log --graph --all --decorate --stat --date=iso
+    local = !git log --oneline --no-merges `git rev-parse --abbrev-ref --symbolic-full-name @{u}`..HEAD
+    incoming = "!git fetch origin ; git log --oneline --no-merges HEAD..`git rev-parse --abbrev-ref --symbolic-full-name @{u}`"
+    pushup = !git push -u origin `git rev-parse --abbrev-ref HEAD`
+    config-edit = !'/c/Program Files/Sublime Text 3/subl.exe' ~/.gitconfig
+    last-commit-now = !GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date \"$(date)\"
+    remove-file-history = "!git filter-branch --index-filter \"git rm -rf --cached --ignore-unmatch $1\" HEAD"
+[push]
+    default = current
+[user]
+    name = {{ full_name }}
+    email = {{ email }}
+[core]
+    excludesfile =
+    commentChar = ";"
+    editor = vim
+    eol = lf
+    autocrlf = false
+[merge]
+    tool = kdiff3
+[diff]
+    tool = kdiff3
+    guitool = kdiff3
+[mergetool "kdiff3"]
+    path = {{ kdiff_path }}
+    keepBackup = false
+    trustExitCode = false
+[difftool "kdiff3"]
+    path = {{ kdiff_path }}
+    keepBackup = false
+    trustExitCode = false
+[mergetool]
+    prompt = false
+[difftool]
+    prompt = false
+[gui]
+    fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+# [filter "lfs"]
+#     required = true
+#     clean = git-lfs clean -- %f
+#     smudge = git-lfs smudge -- %f
+#     process = git-lfs filter-process
+[fetch]
+    prune = true
+[credential]
+    helper = manager
+[http]
+#    proxy =

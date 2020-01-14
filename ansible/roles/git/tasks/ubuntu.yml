@@ -7,3 +7,10 @@
 - name: configure bash fallback
   include_tasks: bash-fallback.yml
   when: git_bash_fallback|default(false)|bool == true
+
+- apt:
+    name:
+      - kdiff3-qt
+
+- name: create git config
+  include_tasks: git-config.yml

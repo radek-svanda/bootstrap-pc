@@ -3,30 +3,32 @@ ansible_connection: local
 packages:
   - name: apt-transport-https
   - name: aptitude
+  - name: awscli
   - name: ca-certificates
   - name: calibre
   - name: curl
-  - name: jq
+  - name: dconf-editor
   - name: default-jre
   - name: dos2unix
-  - name: dconf-editor
   - name: firefox
-  - name: gnupg-agent
   - name: gnome-calculator
   - name: gnome-photos
   - name: gnome-software-plugin-flatpak
+  - name: gnupg-agent
+  - name: htop
+  - name: jq
+  - name: libreoffice
+  - name: net-tools
+  - name: pinta
+  - name: software-properties-common
+  - name: vagrant
+  - name: virtualbox
+  - name: xdotool
+
   - name: gnome-shell-extension-desktop-icons
     state: absent
   - name: yelp
     state: absent
-  - name: htop
-  - name: libreoffice
-  - name: pinta
-  - name: software-properties-common
-  - name: virtualbox
-  - name: vagrant
-  - name: xdotool
-  - name: net-tools
 
   # repo esample:
   # - name: spotify-client
