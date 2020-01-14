@@ -2,4 +2,5 @@
 
 ## TODO
 
-* Intellij https://download-cf.jetbrains.com/idea/ideaIU-2019.3.1.tar.gz
+* Timeular (https://github.com/krisbuist/timeular-zei-linux.git)
+* Toggl desktop
