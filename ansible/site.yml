@@ -6,7 +6,7 @@
     - group_vars/ubuntu_at_work.yml
     - secrets.yml
   roles:
-    - role: gantsign.ctop
-    - role: intellij
+    #- role: gantsign.ctop
+    #- role: intellij
     - role: git
     - role: essentials

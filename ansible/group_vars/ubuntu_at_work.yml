@@ -21,6 +21,7 @@ packages:
   - name: net-tools
   - name: pinta
   - name: software-properties-common
+  - name: vim
   - name: vagrant
   - name: virtualbox
   - name: xdotool

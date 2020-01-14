@@ -21,5 +21,5 @@
     name: "{{ item.name }}"
     remote: "{{ item.remote.name | default('flathub') }}"
     state: "{{ item.state | default('present') }}"
-  with_items: "{{ flatpak_packages }}"
+  with_items: "{{ flatpaks }}"
   become: yes

@@ -21,11 +21,11 @@ fi
 shift
 
 if [ ! -f /usr/bin/ansible ]; then
-	echo "Installing ansible"
+    echo "Installing ansible"
     sudo apt-get update --yes
 
     #sudo apt-get install -y python-pip --no-install-recommends
-    #sudo apt-get install -y python-jmespath
+    sudo apt-get install -y python-jmespath || exit 1
 
 	sudo apt-get install -y software-properties-common
 	sudo apt-add-repository --yes --update ppa:ansible/ansible || exit 1
@@ -35,8 +35,8 @@ fi
 
 mkdir -p ~/.ansible
 
-boostrap_pwd_file=~/.ansible/bootstrap.pwd
-if [ ! -f ${bootstrap_pwd_file} ]; then
+bootstrap_pwd_file=~/.ansible/bootstrap.pwd
+if [[ ! -f ${bootstrap_pwd_file} ]]; then
     touch ${bootstrap_pwd_file}
     chmod 0600 ${bootstrap_pwd_file}
     read -sp 'Vault password: ' password
@@ -44,7 +44,7 @@ if [ ! -f ${bootstrap_pwd_file} ]; then
 fi
 
 become_pwd_file=~/.ansible/become.pwd
-if [ ! -f ${become_pwd_file} ]; then
+if [[ ! -f ${become_pwd_file} ]]; then
     touch ${become_pwd_file}
     chmod 0600 ${become_pwd_file}
     read -sp 'Become password: ' password
@@ -59,8 +59,16 @@ if [ -f $REQ ]; then
     ansible-galaxy install -r $REQ
 fi
 
+
+if [[ ! -f secrets.yml ]]; then
+    cp secrets.example.yml secrets.yml
+    ansible-vault encrypt --vault-password-file ${bootstrap_pwd_file} secrets.yml
+    ansible-vault edit secrets.yml
+fi
+
 ANSIBLE_CONFIG=ansible.cfg \
     ansible-playbook \
     --vault-password-file=~/.ansible/bootstrap.pwd \
     --extra-vars "ansible_become_pass=`cat ${become_pwd_file}`" \
     --limit $HOST $* site.yml
+
