@@ -23,6 +23,7 @@ packages:
   - name: libreoffice
   - name: pinta
   - name: software-properties-common
+  - name: vim
   - name: virtualbox
   - name: vagrant
   - name: xdotool
