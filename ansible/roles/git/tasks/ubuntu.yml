@@ -8,7 +8,9 @@
   include_tasks: bash-fallback.yml
   when: git_bash_fallback|default(false)|bool == true
 
-- apt:
+- name: install git tools
+  become: yes
+  apt:
     name:
       - kdiff3-qt
 

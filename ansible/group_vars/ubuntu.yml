@@ -1,4 +1,5 @@
 user_home_dir: "{{ ansible_env.HOME }}"
 user_config_dir: "{{ user_home_dir }}/.config"
+user_local_dir: "{{ user_home_dir }}/.local"
 download_dir: "{{ user_home_dir }}/.ansible/tmp/downloads"
 temp_dir: "{{ user_home_dir }}/.ansible/tmp"

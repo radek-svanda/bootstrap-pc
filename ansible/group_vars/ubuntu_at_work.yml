@@ -13,7 +13,6 @@ packages:
   - name: firefox
   - name: gnome-calculator
   - name: gnome-photos
-  - name: gnome-software-plugin-flatpak
   - name: gnupg-agent
   - name: htop
   - name: jq
