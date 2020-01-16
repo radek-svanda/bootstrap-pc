@@ -41,6 +41,7 @@ if [[ ! -f ${bootstrap_pwd_file} ]]; then
     chmod 0600 ${bootstrap_pwd_file}
     read -sp 'Vault password: ' password
     echo $password > ${bootstrap_pwd_file}
+    echo 'OK'
 fi
 
 become_pwd_file=~/.ansible/become.pwd
@@ -49,6 +50,7 @@ if [[ ! -f ${become_pwd_file} ]]; then
     chmod 0600 ${become_pwd_file}
     read -sp 'Become password: ' password
     echo $password > ${become_pwd_file}
+    echo 'OK'
 fi
 
 
