@@ -25,7 +25,7 @@ if [ ! -f /usr/bin/ansible ]; then
     sudo apt-get update --yes
 
     #sudo apt-get install -y python-pip --no-install-recommends
-    sudo apt-get install -y python-jmespath || exit 1
+    sudo apt-get install -y python-jmespath python-psutil || exit 1
 
 	sudo apt-get install -y software-properties-common
 	sudo apt-add-repository --yes --update ppa:ansible/ansible || exit 1

@@ -1,0 +1,3 @@
+desktop_session: gnome
+
+gnome_extensions_dir: '{{ user_local_dir }}/share/gnome-shell/extensions'

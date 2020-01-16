@@ -1,0 +1,30 @@
+
+- file: path='{{ item }}' state=directory
+  with_items:
+    - '{{ gnome_extensions_dir }}'
+    - '{{ dash_to_dock_file | dirname }}'
+    - '{{ gnome_extensions_dir }}/{{ dash_to_dock_name }}'
+
+- get_url:
+    url: "{{ dash_to_dock_url }}"
+    dest: "{{ dash_to_dock_file }}"
+
+- unarchive:
+    src: '{{ dash_to_dock_file }}'
+    dest: '{{ gnome_extensions_dir }}/{{ dash_to_dock_name }}'
+
+- dconf: key='{{ item.key }}' value='{{ item.value }}'
+  with_items:
+    - key: /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink
+      value: 'true'
+    - key: /org/gnome/shell/extensions/dash-to-dock/running-indicator-style
+      value: "'DOTS'"
+    - key: /org/gnome/shell/extensions/dash-to-dock/click-action
+      value: "'focus-or-previews'"
+
+- dconf: key='{{ item.key }}' value='{{ item.value }}'
+  with_items:
+    - key: /org/gnome/shell/enabled-extensions
+      value: "['{{ dash_to_dock_name }}']"
+    - key: /org/gnome/shell/disabled-extensions
+      value: "'[]'"

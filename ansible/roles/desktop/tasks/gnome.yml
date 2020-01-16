@@ -1,0 +1,14 @@
+
+- name: install gnome session packages
+  become: yes
+  apt:
+    name:
+      - gnome-session
+      - gnome-software-plugin-flatpak
+      - gnome-tweaks
+
+- include_tasks: 'gnome/wallpaper.yml'
+- include_tasks: 'gnome/keyboard.yml'
+- include_tasks: 'gnome/extensions.yml'
+
+# - debug: var=ansible_facts
