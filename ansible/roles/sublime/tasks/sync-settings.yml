@@ -1,0 +1,12 @@
+- name: copy settings
+  copy:
+    src: "{{ item }}"
+    dest: "{{ sublime_text_config_dir }}/{{ item }}"
+    force: no
+  with_items:
+    - Package Control.sublime-settings
+
+- template:
+    src: SyncSettings.sublime-settings.j2
+    dest: "{{ sublime_text_config_dir }}/SyncSettings.sublime-settings"
+    backup: yes

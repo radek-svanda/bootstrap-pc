@@ -1,0 +1,12 @@
+
+- include_vars: "{{ pkg }}"
+  with_first_found:
+    - "{{ edition }}.yml"
+  loop_control:
+    loop_var: pkg
+
+- include_tasks: "{{ pkg }}"
+  with_first_found:
+    - "{{ edition }}.yml"
+  loop_control:
+    loop_var: pkg
