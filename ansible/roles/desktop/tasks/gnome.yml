@@ -12,3 +12,33 @@
 - include_tasks: 'gnome/extensions.yml'
 
 # - debug: var=ansible_facts
+
+- name: replace desktop wallpaper
+  dconf: key='{{ item.key }}' value='{{ item.value }}'
+  with_items:
+    # system
+    - key: /org/gnome/desktop/interface/show-battery-percentage
+      value: "true"
+    - key: /org/gnome/desktop/input-sources/sources
+      value: "[('xkb', 'us'), ('xkb', 'cz')]"
+    # windows
+    - key: /org/gnome/desktop/wm/preferences/button-layout
+      value: "'appmenu:minimize,close'"
+    # modals not attached, can be moved
+    - key: /org/gnome/mutter/attach-modal-dialogs
+      value: "false"
+    # font rendering on max:
+    - key: /org/gnome/settings-daemon/plugins/xsettings/antialiasing
+      value: "'rgba'"
+    - key: /org/gnome/settings-daemon/plugins/xsettings/antialiasing
+      value: "'rgba'"
+    - key: /org/gnome/settings-daemon/plugins/xsettings/hinting
+      value: "'full'"
+    - key: /org/gnome/settings-daemon/plugins/xsettings/hinting
+      value: "'full'"
+    # nautilus icon size
+    - key: /org/gnome/nautilus/icon-view/default-zoom-level
+      value: "'standard'"
+    # new ubuntu icons
+    - key: /org/gnome/desktop/interface/icon-theme
+      value: "'Yaru'"

@@ -6,3 +6,6 @@
       value: "'<Primary><Shift>Right'"
     - key: '/org/gnome/terminal/legacy/keybindings/prev-tab'
       value: "'<Primary><Shift>Left'"
+    # nautilus
+    - key: /org/gnome/settings-daemon/plugins/media-keys/home
+      value: "['<Super>e']"
