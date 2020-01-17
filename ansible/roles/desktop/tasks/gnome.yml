@@ -14,7 +14,7 @@
 # - debug: var=ansible_facts
 
 - name: replace desktop wallpaper
-  dconf: key='{{ item.key }}' value='{{ item.value }}'
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
   with_items:
     # system
     - key: /org/gnome/desktop/interface/show-battery-percentage

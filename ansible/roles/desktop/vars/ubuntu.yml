@@ -1,3 +1,7 @@
 dash_to_dock_name: dash-to-dock@micxgx.gmail.com
 dash_to_dock_url: https://extensions.gnome.org/review/download/12397.shell-extension.zip
 dash_to_dock_file: "{{ download_dir }}/{{ dash_to_dock_url | basename }}"
+
+gtktitlebar_name: gtktitlebar@velitasali.github.io
+gtktitlebar_url: https://github.com/velitasali/GTKTitleBar/releases/download/5.0/gtktitlebar-5.0.zip
+gtktitlebar_file: "{{ download_dir }}/{{ gtktitlebar_url | basename }}"

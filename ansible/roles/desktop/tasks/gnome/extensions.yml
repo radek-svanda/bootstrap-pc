@@ -22,9 +22,19 @@
     - key: /org/gnome/shell/extensions/dash-to-dock/click-action
       value: "'focus-or-previews'"
 
-- dconf: key='{{ item.key }}' value='{{ item.value }}'
+
+- get_url:
+    url: "{{ gtktitlebar_url }}"
+    dest: "{{ gtktitlebar_file }}"
+
+- unarchive:
+    src: '{{ gtktitlebar_file }}'
+    dest: '{{ gnome_extensions_dir }}'
+
+
+- dconf: key='{{ item.key }}' value='{{ item.value | string }}'
   with_items:
     - key: /org/gnome/shell/enabled-extensions
-      value: "['{{ dash_to_dock_name }}']"
+      value: "['{{ dash_to_dock_name }}', '{{ gtktitlebar_name }}']"
     - key: /org/gnome/shell/disabled-extensions
       value: "'[]'"

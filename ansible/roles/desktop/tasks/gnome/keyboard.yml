@@ -1,5 +1,5 @@
 - name: set keyboard shortcuts
-  dconf: key='{{ item.key }}' value='{{ item.value }}'
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
   with_items:
     # terminal
     - key: '/org/gnome/terminal/legacy/keybindings/next-tab'
