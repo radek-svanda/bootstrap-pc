@@ -21,6 +21,8 @@
       value: "true"
     - key: /org/gnome/desktop/input-sources/sources
       value: "[('xkb', 'us'), ('xkb', 'cz')]"
+    - key: /org/gnome/desktop/interface/monospace-font-name
+      value: 'Monospace 12'
     # windows
     - key: /org/gnome/desktop/wm/preferences/button-layout
       value: "'appmenu:minimize,close'"
