@@ -1,0 +1,5 @@
+intellij_version: '2019.3.1'
+intellij_user_dir: ".IntelliJIdea{{ intellij_version | regex_replace('^([0-9]+\\.[0-9]+)(\\..*)?$', '\\1') }}"
+
+intellij_settings_repo_dir: "{{ user_home_dir }}/{{ intellij_user_dir }}/config/settingsRepository"
+intellij_settings_repo_url: ''

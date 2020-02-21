@@ -7,6 +7,8 @@
     - secrets.yml
   roles:
     #- role: gantsign.ctop
-    #- role: intellij
-    - role: git
-    - role: essentials
+    - role: intellij
+    # - role: git
+    # - role: essentials
+    # - role: sublime
+    #- role: desktop
