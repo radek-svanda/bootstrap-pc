@@ -1,0 +1,42 @@
+- name: add nvidia repositories
+  become: yes
+  apt_repository:
+    repo: ppa:graphics-drivers/ppa
+  register: nvidia_drivers
+
+- name: add nvidia repositories
+  become: yes
+  apt_repository:
+    repo: ppa:aplattner/ppa
+    codename: disco
+  register: nvidia_settings
+
+- name: install driver and settings
+  become: yes
+  apt:
+    name:
+      - nvidia-driver-435
+      - nvidia-settings
+
+- name: copy prime script
+  become: yes
+  copy:
+    src: prime.sh
+    dest: /usr/local/bin/prime
+    mode: u+x,g+x,o+x
+
+- name: create xorg.conf.d directory
+  become: yes
+  file: path=/etc/X11/xorg.conf.d state=directory
+
+- name: copy xorg offload config
+  become: yes
+  copy:
+    src: 10-prime-offload.conf
+    dest: /etc/X11/xorg.conf.d/10-prime-offload.conf
+
+- name: Enable modesetting on the NVIDIA Driver
+  become: yes
+  copy:
+    content: 'options nvidia-drm modeset=1'
+    dest: /etc/modprobe.d/nvidia-drm.conf
