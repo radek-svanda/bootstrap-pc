@@ -8,5 +8,6 @@
   roles:
     #- role: gantsign.ctop
     #- role: intellij
-    - role: git
-    - role: essentials
+    # - role: git
+    # - role: essentials
+    - role: nvidia

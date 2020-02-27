@@ -1,8 +1,11 @@
 - name: set keyboard shortcuts
-  dconf: key='{{ item.key }}' value='{{ item.value }}'
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
   with_items:
     # terminal
     - key: '/org/gnome/terminal/legacy/keybindings/next-tab'
       value: "'<Primary><Shift>Right'"
     - key: '/org/gnome/terminal/legacy/keybindings/prev-tab'
       value: "'<Primary><Shift>Left'"
+    # nautilus
+    - key: /org/gnome/settings-daemon/plugins/media-keys/home
+      value: "['<Super>e']"

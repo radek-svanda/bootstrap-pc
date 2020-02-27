@@ -1,0 +1,4 @@
+# - include_vars: "{{ edition }}.yml"
+
+- name: setup nvidia on {{ edition }}
+  include_tasks: '{{ edition }}.yml'
