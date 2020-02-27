@@ -1,0 +1,34 @@
+- file: path="{{ github_dir }}/bulletmark" state=directory
+
+- name: clone libinput-gestures
+  git:
+    repo: 'https://github.com/bulletmark/libinput-gestures.git'
+    dest: "{{ github_dir }}/bulletmark/libinput-gestures"
+    update: no
+
+- name: install dependencies
+  become: yes
+  apt:
+    name:
+      - xdotool
+      - wmctrl
+      - libinput-tools
+
+- name: add {{ user_name }} to input group
+  become: yes
+  user:
+    name: '{{ user_name }}'
+    append: yes
+    groups: input
+
+- name: install libinput-gestures
+  become: yes
+  command: make install
+  args:
+    chdir: "{{ github_dir }}/bulletmark/libinput-gestures"
+    creates: /usr/bin/libinput-gestures
+  register: libinput-gestures-install
+
+- name: autorun libinput-gestures
+  command: libinput-gestures
+  when: libinput-gestures-install.changed
