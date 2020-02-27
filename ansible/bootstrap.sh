@@ -73,4 +73,3 @@ ANSIBLE_CONFIG=ansible.cfg \
     --vault-password-file=~/.ansible/bootstrap.pwd \
     --extra-vars "ansible_become_pass=`cat ${become_pwd_file}`" \
     --limit $HOST $* site.yml
-

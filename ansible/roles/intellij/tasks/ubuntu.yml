@@ -3,58 +3,72 @@
   vars:
     intellij_edition: ultimate
     intellij_install_dir: /opt/idea
-    # users:
-    #   - username: "{{ user_name }}"
-    #     intellij_disabled_plugins:
-    #       - AngularJS
-    #       - AntSupport
-    #       - CFML Support
-    #       - CloudFoundry
-    #       - DevKit
-    #       - GlassFish
-    #       - JBoss
-    #       - JSR45Plugin
-    #       - Osmorc
-    #       - PerforceDirectPlugin
-    #       - Resin
-    #       - TestNG-J
-    #       - WebSphere
-    #       - Weblogic
-    #       - com.intellij.appengine
-    #       - com.intellij.copyright
-    #       - com.intellij.dmserver
-    #       - com.intellij.drools
-    #       - com.intellij.flex
-    #       - com.intellij.guice
-    #       - com.intellij.gwt
-    #       - com.intellij.ideolog
-    #       - com.intellij.jboss.arquillian
-    #       - com.intellij.jboss.core
-    #       - com.intellij.jbpm
-    #       - com.intellij.play
-    #       - com.intellij.seam
-    #       - com.intellij.seam.pageflow
-    #       - com.intellij.seam.pages
-    #       - com.intellij.struts2
-    #       - com.intellij.tapestry
-    #       - com.intellij.tasks
-    #       - com.intellij.tasks.timeTracking
-    #       - com.intellij.uiDesigner
-    #       - com.jetbrains.plugins.asp
-    #       - cucumber-groovy
-    #       - hg4idea
-    #       - org.coffeescript
-    #       - org.intellij.grails
-    #       - org.jetbrains.android
-    #       - org.jetbrains.idea.eclipse
-    #       - org.jetbrains.idea.gradle.ext
-    #       - org.jetbrains.kotlin
-    #       - org.jetbrains.plugins.gradle
-    #       - org.jetbrains.plugins.javaFX
-    #     intellij_plugins:
-    #       - com.atlassian.bitbucket.references
-    #       - org.zalando.intellij.swagger
-    #       - sonnenhut.liveedit.patch
-    #       - io.mateu.lombok-plugin
-    #       - org.sonarlint.idea
-    #       - org.jetbrains.plugins.vue
+    users:
+      - username: "{{ user_name }}"
+        intellij_disabled_plugins:
+          - AngularJS
+          - AntSupport
+          - CFML Support
+          - CloudFoundry
+          - DevKit
+          - GlassFish
+          - JBoss
+          - JSR45Plugin
+          - Osmorc
+          - PerforceDirectPlugin
+          - Resin
+          - TestNG-J
+          - WebSphere
+          - Weblogic
+          - com.intellij.appengine
+          - com.intellij.copyright
+          - com.intellij.dmserver
+          - com.intellij.drools
+          - com.intellij.flex
+          - com.intellij.guice
+          - com.intellij.gwt
+          - com.intellij.ideolog
+          - com.intellij.jboss.arquillian
+          - com.intellij.jboss.core
+          - com.intellij.jbpm
+          - com.intellij.play
+          - com.intellij.seam
+          - com.intellij.seam.pageflow
+          - com.intellij.seam.pages
+          - com.intellij.struts2
+          - com.intellij.tapestry
+          - com.intellij.tasks
+          - com.intellij.tasks.timeTracking
+          - com.intellij.uiDesigner
+          - com.jetbrains.plugins.asp
+          - cucumber-groovy
+          - hg4idea
+          - org.coffeescript
+          - org.intellij.grails
+          - org.jetbrains.android
+          - org.jetbrains.idea.eclipse
+          - org.jetbrains.idea.gradle.ext
+          - org.jetbrains.kotlin
+          - org.jetbrains.plugins.gradle
+          - org.jetbrains.plugins.javaFX
+        intellij_plugins:
+          - com.atlassian.bitbucket.references
+          - org.zalando.intellij.swagger
+          - sonnenhut.liveedit.patch
+          - io.mateu.lombok-plugin
+          - org.sonarlint.idea
+          - org.jetbrains.plugins.vue
+          - CheckStyle-IDEA
+          - com.jetbrains.darkPurpleTheme
+          - com.jetbrains.lightThemePreview
+
+- name: create settings repostitory directory
+  file: path="{{ intellij_settings_repo_dir }}" state=directory
+
+- name: clone settings
+  git:
+    repo: "{{ intellij_settings_repo_url }}"
+    dest: "{{ intellij_settings_repo_dir }}/repostitory"
+    accept_hostkey: yes
+    update: no
+  when: (intellij_settings_repo_url is defined) and (intellij_settings_repo_url|length > 0)
