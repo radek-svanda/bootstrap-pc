@@ -1,0 +1,4 @@
+
+dmd:
+  url: http://downloads.dlang.org/releases/2.x/2.088.1/dmd_2.088.1-0_amd64.deb
+  local: "/home/{{ user_name }}/Github/onedrive"

@@ -1,0 +1,14 @@
+
+- get_url:
+    url: "{{ maza_url }}"
+    dest: "{{ maza_file }}"
+
+- copy:
+    src: "{{ maza_file }}"
+    dest: "{{ maza_bin }}"
+    mode: '0755'
+  become: yes
+
+- apt: name=dnsmasq
+  become: yes
+

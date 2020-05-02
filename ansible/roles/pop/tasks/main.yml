@@ -1,0 +1,37 @@
+- name: Add PopOS repository
+  apt_repository:
+    repo: ppa:system76/pop
+
+- name: Install PopOS theme files
+  apt:
+    name:
+      - pop-fonts
+      - pop-gnome-shell-theme
+      - pop-gtk-theme
+      - pop-icon-theme
+      - pop-sound-theme
+      - pop-theme
+
+- name: Change system fonts
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+  with_items:
+    - key: /org/gnome/desktop/interface/font-name
+      value: "'Fira Sans Semi-Light 11'"
+    - key: /org/gnome/desktop/interface/document-font-name
+      value: "'Roboto Slab 11'"
+    - key: /org/gnome/desktop/wm/preferences/titlebar-font
+      value: "'Fira Sans Semi-Bold 11'"
+    - key: /org/gnome/desktop/interface/monospace-font-name
+      value: "'Fira Mono 12'"
+
+- name: Change system theme
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+    - key: /org/gnome/desktop/interface/gtk-theme
+      value: "'Pop'"
+    - key: /org/gnome/desktop/interface/icon-theme
+      value: "'Pop'"
+    - key: /org/gnome/shell/extensions/user-theme/name
+      value: "'Pop'"
+    - key: /org/gnome/desktop/sound/theme-name
+      value: "'Pop'"
+

@@ -1,3 +1,10 @@
-# install tilix
-# update-alternatives --config x-terminal-emulator
+
+- apt: name=tilix
+  become: yes
+
+- alternatives:
+    name: x-terminal-emulator
+    path: /usr/bin/tilix.wrapper
+  become: yes
+
 # https://gnunn1.github.io/tilix-web/manual/vteconfig/

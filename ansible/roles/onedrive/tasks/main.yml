@@ -1,0 +1,51 @@
+
+- name: install dependencies
+  apt:
+    name:
+      - libcurl4-openssl-dev
+      - libsqlite3-dev
+      - libnotify-dev
+  become: yes
+
+- name: download dlang
+  get_url:
+    url: "{{ dmd.url }}"
+    dest: "{{ download_dir }}/{{ dmd.url | basename }}"
+
+- name: install dlang
+  apt:
+    deb: "{{ download_dir }}/{{ dmd.url | basename }}"
+  become: yes
+
+- file: path=~/Github state=directory
+
+- name: clone onedrive repository
+  git:
+    repo: https://github.com/abraunegg/onedrive.git
+    dest: "{{ dmd.local }}"
+    version: v2.4.0
+
+- name: build onedrive
+  command: ./configure && make
+  args:
+    chdir: "{{ dmd.local }}"
+    creates: "{{ dmd.local }}/onedrive"
+
+- name: install onedrive
+  command: make install
+  args:
+    chdir: "{{ dmd.local }}"
+    creates: /usr/local/bin/onedrive
+  become: yes
+
+- file: path="{{ user_config_dir }}/onedrive" state=directory
+# - file: path=~/OneDrive state=directory
+
+- name: copy config
+  copy:
+    src: "{{ item }}"
+    dest: "{{ user_config_dir }}/onedrive/{{ item }}"
+    force: yes
+  with_items:
+    - config
+    - sync_list

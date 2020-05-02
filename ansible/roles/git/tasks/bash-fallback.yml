@@ -6,6 +6,15 @@
     marker: '# {mark} GIT BASH FALLBACK'
     block: |
       function command_not_found_handle {
-        echo "Command '$1' not found, trying git command"
-        git $@
+        if git help -a | grep "^   [a-z]" | awk '{print $1}' | grep "^${1}$"; then
+          echo "Command '$1' not found, trying git command"
+          git $@
+        elif git help -a | grep "^   [a-z]" | awk '{print "g"$1}' | grep "^${1}$"; then
+          cmd=${1:1}
+          echo "Command '$1' not found, trying git command ${cmd}"
+          shift
+          git ${cmd} $@
+        else
+          /usr/lib/command-not-found -- "$1"
+        fi
       }

@@ -1,0 +1,6 @@
+---
+
+- include_vars: "{{ edition }}.yml"
+
+- name: setup github on {{ edition }}
+  include_tasks: '{{ edition }}.yml'

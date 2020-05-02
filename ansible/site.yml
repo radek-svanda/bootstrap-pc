@@ -7,8 +7,13 @@
     - secrets.yml
   roles:
     #- role: gantsign.ctop
-    - role: intellij
+    # - role: intellij
     # - role: git
+    # - role: github
+    # - role: onedrive
+    - role: tilix
+    # - role: maza
     # - role: essentials
     # - role: sublime
     #- role: desktop
+    - role: pop
