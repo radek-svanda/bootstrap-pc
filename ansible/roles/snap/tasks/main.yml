@@ -1,0 +1,3 @@
+- name: install snapd
+  apt: name=snapd state=present
+  become: yes

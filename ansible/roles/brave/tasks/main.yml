@@ -1,0 +1,18 @@
+- stat: path=/usr/bin/brave-browser
+  register: brave_exists_result
+
+- apt_key:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+    state: present
+  become: yes
+  when: brave_exists_result == False
+
+- apt_repository:
+    repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+  become: yes
+  when: brave_exists_result == False
+
+- apt: name=brave-browser state=present
+  become: yes
+  when: brave_exists_result == False

@@ -60,15 +60,15 @@
           - org.jetbrains.plugins.vue
           - CheckStyle-IDEA
           - com.jetbrains.darkPurpleTheme
-          - com.jetbrains.lightThemePreview
+          # - com.jetbrains.lightTheme
 
-- name: create settings repostitory directory
-  file: path="{{ intellij_settings_repo_dir }}" state=directory
+# - name: create settings repostitory directory
+#   file: path="{{ intellij_settings_repo_dir }}" state=directory
 
-- name: clone settings
-  git:
-    repo: "{{ intellij_settings_repo_url }}"
-    dest: "{{ intellij_settings_repo_dir }}/repostitory"
-    accept_hostkey: yes
-    update: no
-  when: (intellij_settings_repo_url is defined) and (intellij_settings_repo_url|length > 0)
+# - name: clone settings
+#   git:
+#     repo: "{{ intellij_settings_repo_url }}"
+#     dest: "{{ intellij_settings_repo_dir }}/repostitory"
+#     accept_hostkey: yes
+#     update: no
+#   when: (intellij_settings_repo_url is defined) and (intellij_settings_repo_url|length > 0)

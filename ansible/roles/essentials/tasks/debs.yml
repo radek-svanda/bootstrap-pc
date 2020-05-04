@@ -1,0 +1,12 @@
+- file: path="{{ download_dir }}" state=directory
+
+- name: download debs
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ download_dir }}/{{ item.url | basename }}"
+  with_items: "{{ debs }}"
+
+- name: install debs
+  apt: deb="{{ download_dir }}/{{ item.url | basename }}"
+  with_items: "{{ debs }}"
+  become: yes

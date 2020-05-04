@@ -16,4 +16,40 @@
     # - role: essentials
     # - role: sublime
     #- role: desktop
-    - role: pop
+    #- role: pop
+
+- hosts: pop_at_work
+  vars_files:
+    - group_vars/ubuntu.yml
+    - group_vars/pop_at_work.yml
+    - secrets.yml
+  roles:
+    # - role: snap
+    - role: essentials
+    # - role: sublime
+    # - role: gantsign.ctop
+    # - role: intellij
+    - role: asdf
+    #   asdf_user: "{{ user_name }}"
+    #   asdf_plugins:
+    #     - name: "java"
+    #       versions:
+    #         - 'adopt-openjdk-11.0.7+10'
+    #         - 'adopt-openjdk-8u252-b09'
+    #       global: 'adopt-openjdk-11.0.7+10'
+    #     - name: "nodejs"
+    #       versions:
+    #         - '12.16.3'
+    #       global: '12.16.3'
+    #     - name: "maven"
+    #       versions:
+    #         - '3.6.3'
+    #       global: '3.6.3'
+    #     - name: "github-cli"
+    #       versions:
+    #         - '0.7.0'
+    #       global: '0.7.0'
+    - role: docker
+    - role: tilix
+    - role: brave
+    - role: git

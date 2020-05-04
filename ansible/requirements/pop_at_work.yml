@@ -1,0 +1,7 @@
+# SDK man: https://github.com/gantsign/ansible_role_sdkman/blob/master/README.md
+# - src: gantsign.sdkman
+# https://github.com/gantsign/ansible_role_sdkman_init
+# https://github.com/gantsign/ansible_role_ctop
+- src: gantsign.ctop
+- src: gantsign.intellij
+- src: cimon-io.asdf

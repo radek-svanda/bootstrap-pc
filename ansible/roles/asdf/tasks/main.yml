@@ -1,0 +1,15 @@
+- stat: path="{{ user_home_dir }}/.asdf/bin/asdf"
+  register: asdf_exists_result
+
+- import_role: name=cimon-io.asdf
+  when: asdf_exists_result == False
+
+- name: configure asdf bashrc
+  blockinfile:
+    path: '{{ user_home_dir }}/.bashrc'
+    marker: '# {mark} ASDF BASH'
+    block: |
+      if [ -f "$HOME/.asdf/asdf.sh" ]; then
+        source $HOME/.asdf/asdf.sh
+        source $HOME/.asdf/completions/asdf.bash
+      fi

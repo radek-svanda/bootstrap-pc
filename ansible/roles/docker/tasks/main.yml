@@ -1,0 +1,12 @@
+
+- apt:
+    name:
+      - docker.io
+      - docker-compose
+  become: yes
+
+- user:
+    name: "{{ user_name }}"
+    append: yes
+    groups: docker
+  become: yes

@@ -20,17 +20,8 @@ fi
 
 shift
 
-if [ ! -f /usr/bin/ansible ]; then
-    echo "Installing ansible"
-    sudo apt-get update --yes
-
-    #sudo apt-get install -y python-pip --no-install-recommends
-    sudo apt-get install -y python-jmespath python-psutil || exit 1
-
-	sudo apt-get install -y software-properties-common
-	sudo apt-add-repository --yes --update ppa:ansible/ansible || exit 1
-	sudo apt-get install --yes ansible || exit 1
-    # sudo pip install pywinrm || exit 1
+if [[ ! -f /usr/bin/ansible ]]; then
+  sudo apt-get install -y ansible
 fi
 
 mkdir -p ~/.ansible

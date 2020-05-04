@@ -22,4 +22,5 @@
     remote: "{{ item.remote.name | default('flathub') }}"
     state: "{{ item.state | default('present') }}"
   with_items: "{{ flatpaks }}"
+  when: flatpaks is defined
   become: yes

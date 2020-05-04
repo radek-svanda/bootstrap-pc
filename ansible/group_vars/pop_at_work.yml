@@ -1,0 +1,66 @@
+ansible_connection: local
+
+packages:
+#  - name: apt-transport-https
+  - name: aptitude
+  - name: awscli
+  - name: ca-certificates
+#  - name: calibre
+  - name: code
+  - name: curl
+  - name: dconf-editor
+#  - name: default-jre
+  - name: dos2unix
+#  - name: firefox
+#  - name: gnome-calculator
+#  - name: gnome-photos
+  - name: gnupg-agent
+  - name: htop
+  - name: jq
+  - name: spotify-client
+#  - name: libreoffice
+  - name: net-tools
+  - name: pinta
+#  - name: software-properties-common
+  - name: slack-desktop
+  - name: vim
+  - name: kdiff3
+  - name: meld
+
+#  - name: vagrant
+#  - name: virtualbox
+#  - name: xdotool
+
+#  - name: gnome-shell-extension-desktop-icons
+#    state: absent
+#  - name: yelp
+#    state: absent
+
+#  - name: ulauncher
+#    ppa: ppa:agornostal/ulauncher
+
+#flatpaks:
+#  - name: com.getpostman.Postman
+#  - name: com.github.calo001.fondo
+#  - name: com.skype.Client
+#  - name: com.slack.Slack
+#  - name: com.spotify.Client
+#  - name: com.toggl.TogglDesktop
+
+snaps:
+#  - name: rambox
+  # remove preinstalled
+#  - name: gnome-logs
+#    state: absent
+#  - name: gnome-calculator
+#    state: absent
+#  - name: gnome-characters
+#    state: absent
+  - name: authy
+    channel: beta
+
+debs:
+ - name: keeweb-desktop
+   url: https://github.com/keeweb/keeweb/releases/download/v1.11.6/KeeWeb-1.11.6.linux.x64.deb
+#  - name: google-chrome-stable
+#    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

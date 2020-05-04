@@ -36,11 +36,10 @@
     config-edit = !'/c/Program Files/Sublime Text 3/subl.exe' ~/.gitconfig
     last-commit-now = !GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date \"$(date)\"
     remove-file-history = "!git filter-branch --index-filter \"git rm -rf --cached --ignore-unmatch $1\" HEAD"
+    identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
 [push]
     default = current
 [user]
-    name = {{ full_name }}
-    email = {{ email }}
     useConfigOnly = true
 [core]
     excludesfile = ~/.gitignore
@@ -78,6 +77,7 @@
     prompt = false
 [gui]
     fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+    editor = subl
 # [filter "lfs"]
 #     required = true
 #     clean = git-lfs clean -- %f
@@ -86,6 +86,17 @@
 [fetch]
     prune = true
 [credential]
-    helper = manager
+    helper = store
 [http]
 #    proxy =
+[user "elder"]
+    name = Radek Svanda
+    email = radek.svanda@elder.cz
+    signingkey = 70AA3F48B1C5A89F
+[user "rsvanda"]
+    name = Radek Svanda
+    email = rsvanda@gmail.com
+    signingkey = D65905E3F396BCAF
+[commit]
+    gpgsign = true
+

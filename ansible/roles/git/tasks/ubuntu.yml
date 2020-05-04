@@ -12,7 +12,8 @@
   become: yes
   apt:
     name:
-      - kdiff3-qt
+      - kdiff3
+      - meld
 
 - name: create git config
   include_tasks: git-config.yml
