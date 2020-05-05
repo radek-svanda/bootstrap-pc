@@ -1,0 +1,11 @@
+- file: path='{{ item }}' state=directory
+  with_items:
+    - '{{ gnome_extensions_dir }}'
+
+- get_url:
+    url: "{{ gtktitlebar_url }}"
+    dest: "{{ gtktitlebar_file }}"
+
+- unarchive:
+    src: '{{ gtktitlebar_file }}'
+    dest: '{{ gnome_extensions_dir }}'

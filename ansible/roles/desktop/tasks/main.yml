@@ -1,4 +1,11 @@
-- include_vars: "{{ edition }}.yml"
-
 - name: setup desktop on {{ edition }}
   include_tasks: '{{ edition }}.yml'
+
+# /org/gnome/desktop/interface/font-name
+#   'Fira Sans Semi-Light 11'
+
+# /org/gnome/desktop/interface/monospace-font-name
+#   'Fira Mono 12'
+
+# /org/gnome/desktop/input-sources/sources
+#   [('xkb', 'us'), ('xkb', 'cz+qwerty')]

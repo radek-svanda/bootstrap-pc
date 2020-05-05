@@ -25,11 +25,11 @@
     - secrets.yml
   roles:
     # - role: snap
-    - role: essentials
+    # - role: essentials
     # - role: sublime
     # - role: gantsign.ctop
     # - role: intellij
-    - role: asdf
+    # - role: asdf
     #   asdf_user: "{{ user_name }}"
     #   asdf_plugins:
     #     - name: "java"
@@ -49,7 +49,9 @@
     #       versions:
     #         - '0.7.0'
     #       global: '0.7.0'
-    - role: docker
-    - role: tilix
-    - role: brave
-    - role: git
+    # - role: docker
+    # - role: tilix
+    # - role: brave
+    # - role: git
+    # - role: desktop
+    - role: mutt

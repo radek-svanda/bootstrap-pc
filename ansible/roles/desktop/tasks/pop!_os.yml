@@ -1,0 +1,14 @@
+- include_vars: "ubuntu.yml"
+- include_tasks: 'gnome/extensions/gtktitlebar.yml'
+
+- name: replace desktop wallpaper
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+  with_items:
+    # system
+    - key: /org/gnome/desktop/interface/show-battery-percentage
+      value: "true"
+    - key: /org/gnome/desktop/input-sources/sources
+      value: "[('xkb', 'us'), ('xkb', 'cz')]"
+    # single click open in nautilus
+    - key: /org/gnome/nautilus/preferences/click-policy
+      value: "'single'"

@@ -33,10 +33,6 @@
     # font rendering on max:
     - key: /org/gnome/settings-daemon/plugins/xsettings/antialiasing
       value: "'rgba'"
-    - key: /org/gnome/settings-daemon/plugins/xsettings/antialiasing
-      value: "'rgba'"
-    - key: /org/gnome/settings-daemon/plugins/xsettings/hinting
-      value: "'full'"
     - key: /org/gnome/settings-daemon/plugins/xsettings/hinting
       value: "'full'"
     # nautilus icon size
