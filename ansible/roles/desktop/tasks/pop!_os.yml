@@ -12,3 +12,14 @@
     # single click open in nautilus
     - key: /org/gnome/nautilus/preferences/click-policy
       value: "'single'"
+    # media shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/play
+      value: "['<Alt><Super>Down']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/volume-up
+      value: "['<Primary><Alt><Super>Up']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/volume-down
+      value: "['<Primary><Alt><Super>Down']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/next
+      value: "['<Alt><Super>Right']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/previous
+      value: "['<Alt><Super>Left']"

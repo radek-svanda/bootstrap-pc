@@ -2,6 +2,8 @@
     name:
       - neomutt
       - offlineimap
+      - w3m
+      - libnotify-bin
   become: yes
 
 - flatpak:

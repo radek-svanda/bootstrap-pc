@@ -19,6 +19,8 @@
   with_items: "{{ ppa_repos }}"
   become: yes
 
+# $ dpkg -l | grep "^ii" | awk '{ print $2 }'
+
 - name: install apt packages
   apt:
     name: "{{ item.name }}"
