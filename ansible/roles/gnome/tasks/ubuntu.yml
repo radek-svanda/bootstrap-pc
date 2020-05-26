@@ -1,0 +1,100 @@
+- include_vars: "{{ edition }}.yml"
+- include_tasks: 'gnome/extensions/gtktitlebar.yml'
+- include_tasks: 'gnome/extensions/appindicators.yml'
+# https://github.com/pop-os/gnome-shell-extension-always-show-workspaces
+# https://github.com/pop-os/gnome-shell-extension-alt-tab-raise-first-window
+# https://extensions.gnome.org/extension/302/windowoverlay-icons/
+
+- name: remove ubuntu session
+  apt: name=ubuntu-session state=absent
+  become: yes
+
+- name: add gnome session
+  apt: name=gnome-session state=present
+  become: yes
+
+- name: install gnome session packages
+  become: yes
+  apt:
+    name:
+      - gnome-software-plugin-flatpak
+      - gnome-tweaks
+      - gnome-shell-extension-remove-dropdown-arrows
+      - gnome-shell-extension-tilix-shortcut
+      - gnome-shell-extensions
+      - gpaste
+      - gnome-shell-extensions-gpaste
+      - gnome-shell-extension-hide-activities
+
+- name: gnome setup
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+  with_items:
+    # system
+    - key: /org/gnome/desktop/interface/show-battery-percentage
+      value: "true"
+    - key: /org/gnome/desktop/input-sources/sources
+      value: "[('xkb', 'us'), ('xkb', 'cz')]"
+    # windows
+    # - key: /org/gnome/desktop/wm/preferences/button-layout
+    #   value: "'appmenu:minimize,close'"
+    # single click open in nautilus
+    - key: /org/gnome/nautilus/preferences/click-policy
+      value: "'single'"
+    # media shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/play
+      value: "['<Alt><Super>Down']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/volume-up
+      value: "['<Primary><Alt><Super>Up']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/volume-down
+      value: "['<Primary><Alt><Super>Down']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/next
+      value: "['<Alt><Super>Right']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/previous
+      value: "['<Alt><Super>Left']"
+    # terminal shortcuts
+    - key: '/org/gnome/terminal/legacy/keybindings/next-tab'
+      value: "'<Primary><Shift>Right'"
+    - key: '/org/gnome/terminal/legacy/keybindings/prev-tab'
+      value: "'<Primary><Shift>Left'"
+    # nautilus shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/home
+      value: "['<Super>e']"
+    # modals not attached, can be moved
+    - key: /org/gnome/mutter/attach-modal-dialogs
+      value: "false"
+    # font rendering on max:
+    - key: /org/gnome/settings-daemon/plugins/xsettings/antialiasing
+      value: "'rgba'"
+    - key: /org/gnome/settings-daemon/plugins/xsettings/hinting
+      value: "'full'"
+    # nautilus icon size
+    - key: /org/gnome/nautilus/icon-view/default-zoom-level
+      value: "'standard'"
+    # new ubuntu icons
+    # - key: /org/gnome/desktop/interface/icon-theme
+      # value: "'Yaru'"
+    - key: /org/gnome/desktop/interface/cursor-theme
+      value: "'Adwaita'"
+    # tap to click
+    - key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
+      value: "true"
+    # extensions
+    # - key: /org/gnome/shell/enabled-extensions
+    #   value: "['user-theme@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'gtktitlebar@velitasali.github.io', 'GPaste@gnome-shell-extensions.gnome.org', 'ubuntu-appindicators@ubuntu.com']"
+
+
+# gnome-terminal gruvbox colors
+# /org/gtk/settings/color-chooser/selected-color
+#   (true, 0.92156862745098034, 0.85882352941176465, 0.69803921568627447, 1.0)
+
+# /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/palette
+#   ['rgb(50,48,47)', 'rgb(204,36,29)', 'rgb(152,151,26)', 'rgb(215,153,33)', 'rgb(69,133,136)', 'rgb(177,98,134)', 'rgb(104,157,106)', 'rgb(189,174,147)', 'rgb(124,111,100)', 'rgb(251,73,52)', 'rgb(184,187,38)', 'rgb(250,189,47)', 'rgb(131,165,152)', 'rgb(211,134,155)', 'rgb(142,192,124)', 'rgb(235,219,178)']
+# /org/gtk/settings/color-chooser/custom-colors
+#   [(0.92156862745098034, 0.85882352941176465, 0.69803921568627447, 1.0), (0.55686274509803924, 0.75294117647058822, 0.48627450980392151, 1.0), (0.20392156862745098, 0.88627450980392153, 0.88627450980392153, 1.0), (0.82745098039215681, 0.52549019607843139, 0.60784313725490191, 1.0), (0.51372549019607838, 0.6470588235294118, 0.59607843137254901, 1.0), (0.98039215686274506, 0.74117647058823521, 0.18431372549019612, 1.0), (0.72156862745098049, 0.73333333333333328, 0.14901960784313728, 1.0), (0.98431372549019602, 0.28627450980392161, 0.20392156862745101, 1.0)]
+
+
+- name: create nautilus bookmarks
+  lineinfile:
+    path: "{{ user_config_dir }}/gtk-3.0/bookmarks"
+    line: "file://{{ item }}"
+  with_items: "{{ nautilus_bookmarks }}"

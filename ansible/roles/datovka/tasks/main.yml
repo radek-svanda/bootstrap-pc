@@ -1,0 +1,9 @@
+
+- apt: name=datovka state=latest
+  become: yes
+
+- file:
+    state: link
+    src: "{{ dsgui_path }}"
+    path: ~/.dsgui
+  when: dsgui_path is defined

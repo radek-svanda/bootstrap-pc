@@ -26,7 +26,8 @@ packages:
   - name: vim
   - name: kdiff3
   - name: meld
-
+  - name: obs-studio
+  - name: obs-plugins
 #  - name: vagrant
 #  - name: virtualbox
 #  - name: xdotool
@@ -58,9 +59,10 @@ snaps:
 #    state: absent
   - name: authy
     channel: beta
+  - name: insomnia
 
 debs:
- - name: keeweb-desktop
-   url: https://github.com/keeweb/keeweb/releases/download/v1.11.6/KeeWeb-1.11.6.linux.x64.deb
-#  - name: google-chrome-stable
-#    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - name: keeweb-desktop
+    url: https://github.com/keeweb/keeweb/releases/download/v1.11.6/KeeWeb-1.11.6.linux.x64.deb
+  - name: protonmail
+    url: https://protonmail.com/download/protonmail-bridge_1.2.6-1_amd64.deb

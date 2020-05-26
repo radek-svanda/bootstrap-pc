@@ -1,0 +1,8 @@
+vscode_version:
+vscode_debs:
+  - name: code
+    url: https://go.microsoft.com/fwlink/?LinkID=760868
+    filename: vscode.deb
+    # https://update.code.visualstudio.com/latest/linux-deb-x64/stable
+    # url: https://az764295.vo.msecnd.net/stable/5763d909d5f12fe19f215cbfdd29a91c0fa9208a/code_1.45.1-1589445302_amd64.deb
+    upgrade: no

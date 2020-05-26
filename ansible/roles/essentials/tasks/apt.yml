@@ -1,4 +1,9 @@
 
+- name: read packages
+  shell: dpkg -l | grep "^ii" | awk '{ print $2 }'
+  register: apt_packages
+  changed_when: false
+
 - name: add repository keys
   apt_key:
     url: "{{ item }}"
@@ -25,3 +30,4 @@
     state: "{{ item.state | default('present') }}"
   with_items: "{{ packages }}"
   become: yes
+  when: not item.name in apt_packages.stdout_lines

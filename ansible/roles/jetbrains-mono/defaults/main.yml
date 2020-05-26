@@ -1,0 +1,5 @@
+
+jetbrains_mono_version: 1.0.3
+jetbrains_mono_url: "https://download.jetbrains.com/fonts/JetBrainsMono-{{ jetbrains_mono_version }}.zip"
+jetbrains_mono_local: "{{ download_dir }}/{{ jetbrains_mono_url | basename }}"
+jetbrains_mono_temp: /tmp/jetbrains_mono_temp

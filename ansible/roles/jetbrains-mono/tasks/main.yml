@@ -1,0 +1,24 @@
+
+- stat: path="{{ jetbrains_mono_local }}"
+  register: jb_font_file
+
+- get_url:
+    url: "{{ jetbrains_mono_url }}"
+    dest: "{{ jetbrains_mono_local }}"
+  when: not jb_font_file.stat.exists
+  register: jb_font_download
+
+- file: path="{{ item }}" state=directory
+  with_items:
+    - "{{ local_fonts }}"
+    - "{{ jetbrains_mono_temp }}"
+
+- unarchive:
+    src: "{{ jetbrains_mono_local }}"
+    dest: "{{ jetbrains_mono_temp }}"
+    extra_opts:
+      - "-j"
+  # when: jb_font_download.changed
+
+- shell: "mv {{ jetbrains_mono_temp }}/* {{ local_fonts }}"
+  # when: jb_font_download.changed

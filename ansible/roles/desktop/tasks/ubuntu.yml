@@ -1,4 +1,0 @@
-- include_vars: "{{ edition }}.yml"
-
-- name: setup  {{ desktop_session }} desktop
-  include_tasks: '{{ desktop_session }}.yml'

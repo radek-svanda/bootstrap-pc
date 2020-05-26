@@ -2,12 +2,7 @@
     name:
       - neomutt
       - offlineimap
-  become: yes
-
-- flatpak:
-    name: "{{ item }}"
-    remote: flathub
-    state: present
-  with_items:
-    - ch.protonmail.protonmail-bridge
+      - w3m
+      - w3m-img
+      - libnotify-bin
   become: yes

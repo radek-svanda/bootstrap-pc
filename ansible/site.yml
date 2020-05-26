@@ -6,17 +6,43 @@
     - group_vars/ubuntu_at_work.yml
     - secrets.yml
   roles:
-    #- role: gantsign.ctop
-    # - role: intellij
-    # - role: git
-    # - role: github
-    # - role: onedrive
-    - role: tilix
-    # - role: maza
     # - role: essentials
+    - role: gnome
+      nautilus_bookmarks:
+        - "{{ user_home_dir }}/Workspace"
+        - "{{ user_home_dir }}/OneDrive"
+        - "{{ user_home_dir }}/Dropbox"
+    # - role: pop-theme
+    # - role: tilix
+    # - role: git
+    # - role: asdf
+    #   asdf_user: "{{ user_name }}"
+    #   asdf_plugins:
+    #     - name: "java"
+    #       versions:
+    #         - 'adopt-openjdk-11.0.7+10'
+    #         - 'adopt-openjdk-8u252-b09'
+    #       global: 'adopt-openjdk-11.0.7+10'
+    #     - name: "nodejs"
+    #       versions:
+    #         - '12.16.3'
+    #       global: '12.16.3'
+    #     - name: "maven"
+    #       versions:
+    #         - '3.6.3'
+    #       global: '3.6.3'
+    #     - name: "github-cli"
+    #       versions:
+    #         - '0.7.0'
+    #       global: '0.7.0'
+    # - role: docker
     # - role: sublime
-    #- role: desktop
-    #- role: pop
+    # - role: code
+    # - role: intellij
+    # - role: mutt
+    # - role: datovka
+    # - role: gantsign.ctop
+    # - role: jetbrains-mono
 
 - hosts: pop_at_work
   vars_files:

@@ -1,14 +1,16 @@
 ansible_connection: local
 
 packages:
+  # - name: calibre
+  # - name: default-jre
+  # - name: vagrant
+  # - name: virtualbox
   - name: apt-transport-https
   - name: aptitude
   - name: awscli
   - name: ca-certificates
-  - name: calibre
   - name: curl
   - name: dconf-editor
-  - name: default-jre
   - name: dos2unix
   - name: firefox
   - name: gnome-calculator
@@ -21,43 +23,37 @@ packages:
   - name: pinta
   - name: software-properties-common
   - name: vim
-  - name: vagrant
-  - name: virtualbox
   - name: xdotool
+  - name: vlc
 
   - name: gnome-shell-extension-desktop-icons
     state: absent
   - name: yelp
     state: absent
 
-  # repo esample:
-  # - name: spotify-client
-  #   key: https://download.spotify.com/debian/pubkey.gpg
-  #   repo: deb http://repository.spotify.com stable non-free
+  - name: insomnia
+    key: https://insomnia.rest/keys/debian-public.key.asc
+    repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
 
-  - name: ulauncher
-    ppa: ppa:agornostal/ulauncher
+  # - name: ulauncher
+    # ppa: ppa:agornostal/ulauncher
 
 flatpaks:
-  - name: com.getpostman.Postman
-  - name: com.github.calo001.fondo
-  - name: com.skype.Client
+#   - name: com.getpostman.Postman
+#   - name: com.github.calo001.fondo
+#   - name: com.skype.Client
   - name: com.slack.Slack
   - name: com.spotify.Client
-  - name: com.toggl.TogglDesktop
+#   - name: com.toggl.TogglDesktop
 
 snaps:
-  - name: rambox
-  # remove preinstalled
-  - name: gnome-logs
-    state: absent
-  - name: gnome-calculator
-    state: absent
-  - name: gnome-characters
-    state: absent
+  - name: authy
 
 debs:
   - name: keeweb-desktop
-    url: https://github.com/keeweb/keeweb/releases/download/v1.11.6/KeeWeb-1.11.6.linux.x64.deb
+    url: https://github.com/keeweb/keeweb/releases/download/v1.14.2/KeeWeb-1.14.2.linux.x64.deb
+  - name: protonmail-bridge-update
+    url: https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
   - name: google-chrome-stable
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    upgrade: no

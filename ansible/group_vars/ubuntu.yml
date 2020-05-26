@@ -5,3 +5,5 @@ download_dir: "{{ user_home_dir }}/.ansible/tmp/downloads"
 temp_dir: "{{ user_home_dir }}/.ansible/tmp"
 
 github_dir: "{{ user_home_dir }}/Github"
+
+local_fonts: "{{ user_local_dir }}/share/fonts"

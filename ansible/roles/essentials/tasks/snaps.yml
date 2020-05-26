@@ -1,4 +1,9 @@
 
+- name: get snap list
+  shell: snap list | awk '{print $1}'
+  register: snap_packages
+  changed_when: false
+
 - name: install snap packages
   snap:
     name: "{{ item.name }}"
@@ -6,6 +11,18 @@
     channel: "{{ item.channel | default('stable') }}"
     state: "{{ item.state | default('present') }}"
   with_items: "{{ snaps }}"
+  when: not item.name in snap_packages.stdout_lines
+  become: yes
+
+- name: check snap configuration
+  shell: snap get system refresh.retain || true
+  # become: yes
+  register: snap_retain
+  changed_when: false
+
+- name: set snap refresh.retain
+  shell: snap set system refresh.retain=2
+  when: snap_retain.stdout != "2"
   become: yes
 
 - name: remove disabled snaps
