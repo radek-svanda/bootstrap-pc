@@ -1,0 +1,5 @@
+- name: enable hq audio
+  become: yes
+  copy:
+    src: hqaudio/pulse-daemon.conf
+    dest: /etc/pulse/daemon.conf

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Action
+TargetLocation=true
+TargetContext=false
+ToolbarLabel[en_US]=Sublime Merge Here
+ToolbarLabel[en]=Sublime Merge Here
+ToolbarLabel[C]=Sublime Merge Here
+Name[en_US]=Sublime Merge Here
+Name[en]=Sublime Merge Here
+Name[C]=Sublime Merge Here
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+Exec=smerge %f
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile

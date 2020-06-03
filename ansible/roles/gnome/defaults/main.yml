@@ -1,5 +1,15 @@
-desktop_session: gnome
+nautilus_bookmarks: []
 
 gnome_extensions_dir: '{{ user_local_dir }}/share/gnome-shell/extensions'
 
-nautilus_bookmarks: []
+extensions_from_git:
+  - id: alt-tab-raise-first-window@system76.com
+    url: https://github.com/pop-os/gnome-shell-extension-alt-tab-raise-first-window.git
+  - id: always-show-workspaces@system76.com
+    url: https://github.com/pop-os/gnome-shell-extension-always-show-workspaces.git
+  - id: windowoverlay-icons@sustmidown.centrum.cz
+    url: https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons.git
+    build: 'make'
+  - id: sound-output-device-chooser@kgshank.net
+    url: https://github.com/kgshank/gse-sound-output-device-chooser.git
+    build: 'mv sound-output-device-chooser@kgshank.net/* .'

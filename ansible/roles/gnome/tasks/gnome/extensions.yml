@@ -1,7 +1,0 @@
-
-- dconf: key='{{ item.key }}' value='{{ item.value | string }}'
-  with_items:
-    - key: /org/gnome/shell/enabled-extensions
-      value: "['{{ dash_to_dock_name }}', '{{ gtktitlebar_name }}']"
-    - key: /org/gnome/shell/disabled-extensions
-      value: "'[]'"

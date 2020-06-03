@@ -16,8 +16,6 @@
   with_items: "{{ deb_files.results }}"
   when: not item.stat.exists
 
-- debug: var=deb_files
-
 - name: install debs
   apt: deb="{{ item.invocation.module_args.path }}" only_upgrade=yes
   with_items: "{{ deb_files.results }}"

@@ -1,9 +1,4 @@
 - include_vars: "{{ edition }}.yml"
-- include_tasks: 'gnome/extensions/gtktitlebar.yml'
-- include_tasks: 'gnome/extensions/appindicators.yml'
-# https://github.com/pop-os/gnome-shell-extension-always-show-workspaces
-# https://github.com/pop-os/gnome-shell-extension-alt-tab-raise-first-window
-# https://extensions.gnome.org/extension/302/windowoverlay-icons/
 
 - name: remove ubuntu session
   apt: name=ubuntu-session state=absent
@@ -25,6 +20,18 @@
       - gpaste
       - gnome-shell-extensions-gpaste
       - gnome-shell-extension-hide-activities
+
+- include: 'extensions.yml'
+
+- include_tasks: 'extensions/gtktitlebar.yml'
+- include_tasks: 'extensions/appindicators.yml'
+
+# - dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+#   with_items:
+#     - key: /org/gnome/shell/enabled-extensions
+#       value: "['{{ dash_to_dock_name }}', '{{ gtktitlebar_name }}']"
+#     - key: /org/gnome/shell/disabled-extensions
+#       value: "'[]'"
 
 - name: gnome setup
   dconf: key='{{ item.key }}' value='{{ item.value | string }}'
@@ -81,6 +88,18 @@
     # extensions
     # - key: /org/gnome/shell/enabled-extensions
     #   value: "['user-theme@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'gtktitlebar@velitasali.github.io', 'GPaste@gnome-shell-extensions.gnome.org', 'ubuntu-appindicators@ubuntu.com']"
+
+    # default gpaste shortcuts clash with intellij
+    - key: /org/gnome/GPaste/sync-clipboard-to-primary
+      value: "''"
+    - key: /org/gnome/GPaste/make-password
+      value: "''"
+    - key: /org/gnome/GPaste/upload
+      value: "''"
+    - key: /org/gnome/GPaste/sync-primary-to-clipboard
+      value: "''"
+    - key: /org/gnome/GPaste/pop
+      value: "''"
 
 
 # gnome-terminal gruvbox colors

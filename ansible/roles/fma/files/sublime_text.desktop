@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Action
+TargetLocation=true
+TargetContext=false
+ToolbarLabel[en_US]=Sublime Text Here
+ToolbarLabel[en]=Sublime Text Here
+ToolbarLabel[C]=Sublime Text Here
+Name[en_US]=Sublime Text Here
+Name[en]=Sublime Text Here
+Name[C]=Sublime Text Here
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+Exec=subl %f
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile

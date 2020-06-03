@@ -1,0 +1,23 @@
+
+- name: install fma
+  become: yes
+  apt:
+    name:
+      - filemanager-actions
+      - nautilus-extension-fma
+
+- name: copy fma definitions
+  copy:
+    src: "{{ item.file }}"
+    dest: "{{ user_local_dir }}/share/file-manager/actions/{{ item.id }}.desktop"
+  with_items: "{{ fma_actions }}"
+
+- name: copy fma config
+  template:
+    src: filemanager-actions.conf.j2
+    dest: "{{ user_config_dir }}/filemanager-actions/filemanager-actions.conf"
+  register: fma_config
+
+- name: quit nautilus
+  shell: nautilus -q || true
+  when: fma_config.changed

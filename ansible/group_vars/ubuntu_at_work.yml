@@ -1,18 +1,16 @@
 ansible_connection: local
 
 packages:
-  # - name: calibre
-  # - name: default-jre
-  # - name: vagrant
-  # - name: virtualbox
   - name: apt-transport-https
   - name: aptitude
   - name: awscli
   - name: ca-certificates
+  - name: calibre
   - name: curl
   - name: dconf-editor
   - name: dos2unix
   - name: firefox
+  - name: gimp
   - name: gnome-calculator
   - name: gnome-photos
   - name: gnupg-agent
@@ -21,19 +19,36 @@ packages:
   - name: libreoffice
   - name: net-tools
   - name: pinta
+  - name: postgresql-client
   - name: software-properties-common
   - name: vim
-  - name: xdotool
   - name: vlc
+  - name: xdotool
+
+  # - name: default-jre
+  # - name: vagrant
+  # - name: virtualbox
 
   - name: gnome-shell-extension-desktop-icons
     state: absent
   - name: yelp
     state: absent
+  - name: apport
+    state: absent
+  - name: apport-gtk
+    state: absent
 
   - name: insomnia
     key: https://insomnia.rest/keys/debian-public.key.asc
     repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
+
+  # video codecs
+  - name: ubuntu-restricted-extras
+  - name: va-driver-all
+  - name: vainfo
+  - name: libva2
+  - name: gstreamer1.0-libav
+  - name: gstreamer1.0-vaapi
 
   # - name: ulauncher
     # ppa: ppa:agornostal/ulauncher
@@ -44,6 +59,9 @@ flatpaks:
 #   - name: com.skype.Client
   - name: com.slack.Slack
   - name: com.spotify.Client
+  - name: io.dbeaver.DBeaverCommunity
+  - name: io.dbeaver.DBeaverCommunity.Client.pgsql
+  - name: io.dbeaver.DBeaverCommunity.Client.mariadb
 #   - name: com.toggl.TogglDesktop
 
 snaps:

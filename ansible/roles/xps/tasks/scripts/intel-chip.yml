@@ -1,0 +1,3 @@
+- name: enable intel powersavings
+  become: yes
+  copy: src=intel-chip/i915.conf dest=/etc/modprobe.d/i915.conf

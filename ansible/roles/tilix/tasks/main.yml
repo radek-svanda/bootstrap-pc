@@ -7,4 +7,11 @@
     path: /usr/bin/tilix.wrapper
   become: yes
 
+- name: tilix configuration
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+  with_items:
+    # open new session in existing window
+    - key: /com/gexperts/Tilix/new-instance-mode
+      value: "'new-session'"
+
 # https://gnunn1.github.io/tilix-web/manual/vteconfig/

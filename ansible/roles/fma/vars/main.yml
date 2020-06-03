@@ -1,0 +1,11 @@
+fma_actions:
+  - id: 90f12844-8d8a-4252-8f1e-305b7796427a
+    file: onedrive.desktop
+  - id: 66f794e8-fb12-461a-adbd-f856aa0d5e5d
+    file: tilix.desktop
+  - id: 7608dedc-7e68-4073-a055-85856fb5dad1
+    file: sublime_text.desktop
+  - id: 7a7d4bb3-48a5-43f0-be68-fc0102363489
+    file: sublime_merge.desktop
+
+fma_actions_ids: "{{ fma_actions | map(attribute='id') | join(';') }}"

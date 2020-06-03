@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Action
+ToolbarLabel[en_US]=Mount OneDrive
+ToolbarLabel[en]=Mount OneDrive
+ToolbarLabel[C]=Mount OneDrive
+Name[en_US]=Mount OneDrive
+Name[en]=Mount OneDrive
+Name[C]=Mount OneDrive
+Profiles=profile-zero;
+TargetLocation=true
+
+[X-Action-Profile profile-zero]
+Folders=/home/radek;
+Basenames=OneDrive;
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile
+Exec=veracrypt --mount --slot=2 --password=`cat ~/.config/onedrive-password` --verbose ~/onedrive.vc %f
+ExecutionMode=DisplayOutput

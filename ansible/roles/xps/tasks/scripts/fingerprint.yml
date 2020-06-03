@@ -1,0 +1,5 @@
+- name: disable fingerprint reader to save power
+  become: yes
+  copy:
+    src: fingerprint/fingerprint.rules
+    dest: /etc/udev/rules.d/fingerprint.rules

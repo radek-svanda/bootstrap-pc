@@ -6,12 +6,13 @@
     - group_vars/ubuntu_at_work.yml
     - secrets.yml
   roles:
-    # - role: essentials
-    - role: gnome
-      nautilus_bookmarks:
-        - "{{ user_home_dir }}/Workspace"
-        - "{{ user_home_dir }}/OneDrive"
-        - "{{ user_home_dir }}/Dropbox"
+    - role: essentials
+    # - role: onedrive
+    # - role: gnome
+    #   nautilus_bookmarks:
+    #     - "{{ user_home_dir }}/Workspace"
+    #     - "{{ user_home_dir }}/OneDrive"
+    #     - "{{ user_home_dir }}/Dropbox"
     # - role: pop-theme
     # - role: tilix
     # - role: git
@@ -43,6 +44,10 @@
     # - role: datovka
     # - role: gantsign.ctop
     # - role: jetbrains-mono
+    # - role: xps
+    # - role: fma
+
+# https://medium.com/@z.baratz/setting-up-keepassxc-on-linux-with-cloud-synchronization-85ccce837365
 
 - hosts: pop_at_work
   vars_files:

@@ -1,0 +1,25 @@
+
+- name: tweak grub params
+  become: yes
+  lineinfile:
+    path: /etc/default/grub
+    line: "GRUB_CMDLINE_LINUX_DEFAULT=\"$GRUB_CMDLINE_LINUX_DEFAULT {{ item.value }}\""
+  with_items:
+    - name: standardize ACPI
+      value: acpi_rev_override=1 acpi_osi=Linux
+    - name: better use of NVME drive
+      value: scsi_mod.use_blk_mq=1
+    - name: disable nouveau
+      value: nouveau.modeset=0 nouveau.runpm=0
+    - name: fix sleep with nvidia
+      value: mem_sleep_default=deep
+    # - name: reduce drm blank off - theoreticaly power saving
+    #   value: drm.vblankoffdelay=1
+    # - name: force ASPM power management
+    #   value: pcie_aspm=force
+  register: grub_tweak
+
+- name: update grub
+  shell: update-grub
+  become: yes
+  when: grub_tweak.changed

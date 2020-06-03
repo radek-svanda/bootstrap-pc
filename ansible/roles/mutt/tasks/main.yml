@@ -6,3 +6,21 @@
       - w3m-img
       - libnotify-bin
   become: yes
+
+# https://babushk.in/posts/offlineimap-systemd.html
+
+- file: path="{{ item }}" state=directory
+  with_items:
+    - "{{ user_config_dir }}/systemd/user"
+
+- name: configure offlineimap service
+  copy: src="{{ item }}" dest="{{ user_config_dir }}/systemd/user/{{ item }}"
+  with_items:
+    - offlineimap.service
+    - offlineimap.timer
+
+- name: enable service httpd and ensure it is not masked
+  systemd:
+    name: offlineimap.timer
+    enabled: yes
+    user: yes

@@ -1,0 +1,28 @@
+
+- name: install dependencies
+  apt:
+    name:
+      - gettext
+  become: yes
+
+- name: check installed
+  stat:
+    path: "{{ gnome_extensions_dir }}/{{ item.id }}"
+  with_items: "{{ extensions_from_git }}"
+  register: from_git
+
+- debug: var=from_git
+
+- name: clone extensions
+  git:
+    repo: "{{ item.item.url }}"
+    dest: "{{ gnome_extensions_dir }}/{{ item.item.id }}"
+  with_items: "{{ from_git.results }}"
+  when: not item.stat.exists
+
+- name: build extensions
+  shell: "{{ item.item.build }}"
+  args:
+    chdir: "{{ gnome_extensions_dir }}/{{ item.item.id }}"
+  with_items: "{{ from_git.results }}"
+  when: not item.stat.exists and item.item.build is defined

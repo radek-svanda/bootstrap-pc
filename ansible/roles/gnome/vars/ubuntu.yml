@@ -9,3 +9,4 @@ gtktitlebar_file: "{{ download_dir }}/{{ gtktitlebar_url | basename }}"
 appindicators_name: appindicatorsupport@rgcjonas.gmail.com
 appindicators_url: https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v33.zip
 appindicators_file: "{{ download_dir }}/{{ appindicators_name }}"
+
