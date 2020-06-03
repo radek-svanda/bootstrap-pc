@@ -56,7 +56,7 @@
     - secrets.yml
   roles:
     # - role: snap
-    # - role: essentials
+    - role: essentials
     # - role: sublime
     # - role: gantsign.ctop
     # - role: intellij

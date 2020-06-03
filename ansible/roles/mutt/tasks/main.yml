@@ -3,7 +3,6 @@
       - neomutt
       - offlineimap
       - w3m
-      - w3m-img
       - libnotify-bin
   become: yes
 
