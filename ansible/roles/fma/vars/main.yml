@@ -3,6 +3,8 @@ fma_actions:
     file: onedrive.desktop
   - id: 66f794e8-fb12-461a-adbd-f856aa0d5e5d
     file: tilix.desktop
+  - id: 567d4768-37dc-4326-b938-722fd1f0222d
+    file: code.desktop
   - id: 7608dedc-7e68-4073-a055-85856fb5dad1
     file: sublime_text.desktop
   - id: 7a7d4bb3-48a5-43f0-be68-fc0102363489

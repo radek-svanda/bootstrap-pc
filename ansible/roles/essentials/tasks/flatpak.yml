@@ -16,11 +16,16 @@
   with_items: "{{ flatpak_remotes }}"
   become: yes
 
+- name: list installed flatpaks
+  shell: flatpak list --columns=application
+  register: flatpaks_installed
+  changed_when: false
+
 - name: install flatpak packages
   flatpak:
     name: "{{ item.name }}"
     remote: "{{ item.remote.name | default('flathub') }}"
     state: "{{ item.state | default('present') }}"
   with_items: "{{ flatpaks }}"
-  when: flatpaks is defined
+  when: flatpaks is defined and not item.name in flatpaks_installed.stdout_lines
   become: yes

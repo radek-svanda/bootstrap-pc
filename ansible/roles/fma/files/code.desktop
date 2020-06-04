@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Action
+TargetLocation=true
+TargetContext=false
+ToolbarLabel[en_US]=Code Here
+ToolbarLabel[en]=Code Here
+ToolbarLabel[C]=Code Here
+Name[en_US]=Code Here
+Name[en]=Code Here
+Name[C]=Code Here
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+Exec=code %f
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile
