@@ -1,0 +1,8 @@
+
+ath10k_driver: QCA6174
+ath10k_remote: https://codeload.github.com/kvalo/ath10k-firmware/zip/master
+ath10k_local: "{{ download_dir }}/ath10k-firmware-master.zip"
+ath10k_extracted: "{{ temp_dir }}/ath10k-firmware-master"
+
+ath10k_firmware_location: "/lib/firmware/ath10k/{{ ath10k_driver }}"
+ath10k_firmware_local_file: "{{ }}/firmware-4.bin_WLAN.RM.2.0-00180-QCARMSWPZ-1"

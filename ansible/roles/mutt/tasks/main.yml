@@ -4,6 +4,12 @@
       - offlineimap
       - w3m
       - libnotify-bin
+      - notmuch
+  become: yes
+
+- apt:
+    name: notmuch-mutt
+    install_recommends: no
   become: yes
 
 # https://babushk.in/posts/offlineimap-systemd.html
@@ -18,8 +24,12 @@
     - offlineimap.service
     - offlineimap.timer
 
-- name: enable service httpd and ensure it is not masked
+- name: enable offlineimap service
   systemd:
     name: offlineimap.timer
     enabled: yes
     user: yes
+
+# configure notmuch
+
+# html preview - copy file first, return asap, delete on close

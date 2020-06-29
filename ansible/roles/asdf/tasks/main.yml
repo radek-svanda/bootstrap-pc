@@ -2,7 +2,10 @@
   register: asdf_exists_result
 
 - import_role: name=cimon-io.asdf
-  when: asdf_exists_result == False
+  vars:
+    asdf_user: "{{ user_name }}"
+    asdf_plugins: "{{ sdks }}"
+  # when: asdf_exists_result == False
 
 - name: configure asdf bashrc
   blockinfile:

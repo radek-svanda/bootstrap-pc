@@ -39,15 +39,14 @@
     # - role: docker
     # - role: sublime
     # - role: code
-    # - role: intellij
+    - role: intellij
     # - role: mutt
     # - role: datovka
     # - role: gantsign.ctop
     # - role: jetbrains-mono
     # - role: xps
-    - role: fma
-
-# https://medium.com/@z.baratz/setting-up-keepassxc-on-linux-with-cloud-synchronization-85ccce837365
+    # - role: fma
+    # - role: aws
 
 - hosts: pop_at_work
   vars_files:

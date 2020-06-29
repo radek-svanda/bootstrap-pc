@@ -1,6 +1,12 @@
 
-# - include_vars: 'ubuntu.yml'
+- user:
+    name: '{{ user_name }}'
+    groups: sys
+    append: yes
+  become: yes
+
 - include_tasks: apt.yml
 - include_tasks: debs.yml
 - include_tasks: flatpak.yml
 - include_tasks: snaps.yml
+- include_tasks: appimage.yml

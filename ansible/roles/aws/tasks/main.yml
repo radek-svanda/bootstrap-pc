@@ -1,0 +1,12 @@
+
+- pip:
+    name: "{{ item }}"
+    executable: pip3
+  become: yes
+  with_items:
+    - aws-mfa
+    - git-remote-codecommit
+
+- apt:
+    name: awscli
+  become: yes

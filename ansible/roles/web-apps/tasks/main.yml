@@ -1,0 +1,5 @@
+
+# npm install nativefier -g
+# whatsapp
+# https://w7.pngwing.com/pngs/110/230/png-transparent-whatsapp-application-software-message-icon-whatsapp-logo-whats-app-logo-logo-grass-mobile-phones.png
+# nativefier --name "WhatsApp" --icon ~/Pictures/whatsapp-icon.png https://web.whatsapp.com ~/Apps/WhatsApp

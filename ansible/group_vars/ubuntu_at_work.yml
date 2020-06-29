@@ -20,10 +20,15 @@ packages:
   - name: net-tools
   - name: pinta
   - name: postgresql-client
+  - name: python-is-python3
+  - name: python3-pip
   - name: software-properties-common
   - name: vim
   - name: vlc
   - name: xdotool
+
+  - name: wireshark-qt
+  - name: libxml2-utils
 
   # - name: default-jre
   # - name: vagrant
@@ -53,6 +58,9 @@ packages:
   # - name: ulauncher
     # ppa: ppa:agornostal/ulauncher
 
+  - name: appimagelauncher
+    ppa: ppa:appimagelauncher-team/stable
+
 flatpaks:
 #   - name: com.getpostman.Postman
 #   - name: com.github.calo001.fondo
@@ -63,15 +71,45 @@ flatpaks:
   - name: io.dbeaver.DBeaverCommunity.Client.pgsql
   - name: io.dbeaver.DBeaverCommunity.Client.mariadb
 #   - name: com.toggl.TogglDesktop
+  - name: com.gigitux.gtkwhats
 
 snaps:
   - name: authy
 
 debs:
-  - name: keeweb-desktop
-    url: https://github.com/keeweb/keeweb/releases/download/v1.14.2/KeeWeb-1.14.2.linux.x64.deb
-  - name: protonmail-bridge-update
+  # - name: keeweb-desktop
+  #   url: https://github.com/keeweb/keeweb/releases/download/v1.14.2/KeeWeb-1.14.2.linux.x64.deb
+  - name: protonmail-bridge
     url: https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
   - name: google-chrome-stable
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     upgrade: no
+
+appimages:
+  - name: Simplenote
+    url: https://github.com/Automattic/simplenote-electron/releases/download/v1.17.0/Simplenote-linux-1.17.0-x86_64.AppImage
+  - name: Timeular
+    url: https://s3.amazonaws.com/timeular-desktop-packages/linux/production/Timeular.AppImage
+
+sdks:
+  - name: "java"
+    versions:
+      - 'adopt-openjdk-11.0.7+10'
+      - 'adopt-openjdk-8u252-b09'
+    global: 'adopt-openjdk-11.0.7+10'
+  - name: "nodejs"
+    versions:
+      - '12.16.3'
+    global: '12.16.3'
+  - name: "maven"
+    versions:
+      - '3.6.3'
+    global: '3.6.3'
+  - name: "github-cli"
+    versions:
+      - '0.9.0'
+    global: '0.9.0'
+  - name: 'yarn'
+    versions:
+      - '1.22.4'
+    global: '1.22.4'

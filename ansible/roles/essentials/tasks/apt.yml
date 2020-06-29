@@ -1,6 +1,6 @@
 
 - name: read packages
-  shell: dpkg -l | grep "^ii" | awk '{ print $2 }'
+  shell: dpkg -l | grep "^ii" | awk '{ print $2 }' | sed 's/:amd64//'
   register: apt_packages
   changed_when: false
 

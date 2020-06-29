@@ -6,3 +6,4 @@
 - include: scripts/hqaudio.yml
 - include: scripts/intel-chip.yml
 - include: scripts/grub.yml
+- include: scripts/wifi-firmware.yml

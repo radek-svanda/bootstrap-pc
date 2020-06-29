@@ -1,0 +1,33 @@
+
+# https://www.dell.com/cz/p/xps-15-7590-laptop/pd
+# https://support.killernetworking.com/knowledge-base/killer-ax1650-in-debian-ubuntu-16-04/
+# https://support.killernetworking.com/knowledge-base/linux-support/
+# https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html
+# https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/
+# $ inxi -Fxxxz
+
+# https://github.com/thebitstick/surfacego-wifi
+
+# ------------ already part of linux 5.1
+
+# - include_vars: 'wifi-firmware.yml'
+
+# - stat: path="{{ ath10k_extracted }}"
+#   register: ath10_files
+
+# - name: download ath10k firmware
+#   get_url:
+#     url: "{{ ath10k_remote }}"
+#     dest: "{{ ath10k_local }}"
+#     force: no
+#   when: not ath10_files.stat.exists
+
+# - name: extract ath10k firmware
+#   unarchive:
+#     src: "{{ ath10k_local }}"
+#     dest: "{{ ath10k_extracted | dirname }}"
+#   when: not ath10_files.stat.exists
+
+# - debug: msg="needs file backup and replacing"
+
+# ------------

@@ -1,0 +1,9 @@
+[Unit]
+Description=Keepass Sync
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/radek/bin/keepass-sync
+TimeoutStartSec=1min30s
+

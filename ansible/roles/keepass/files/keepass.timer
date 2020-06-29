@@ -1,10 +1,10 @@
 [Unit]
-Description=OfflineIMAP Quicksync timer
+Description=Keepass Sync timer
 
 [Timer]
 #OnCalendar=*:*:0/30
 OnCalendar=*:0/5
-Unit=offlineimap.service
+Unit=keepass.service
 
 [Install]
 WantedBy=default.target

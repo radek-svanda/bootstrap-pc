@@ -1,0 +1,35 @@
+
+- stat: path="{{ download_dir }}/{{ item.filename | default ( item.url | basename ) }}"
+  with_items: "{{ appimages }}"
+  register: appimg_files
+
+- name: download appimages
+  get_url:
+    url: "{{ item.item.url }}"
+    dest: "{{ item.invocation.module_args.path }}"
+  with_items: "{{ appimg_files.results }}"
+  when: not item.stat.exists
+
+# - debug: var=appimg_files
+
+- file: path="{{ appimage_dir }}" state=directory
+
+- name: install app
+  copy:
+    src: "{{ item.invocation.module_args.path }}"
+    dest: "{{ appimage_dir }}/{{ item.item.name }}.AppImage"
+    mode: u+x
+  with_items: "{{ appimg_files.results }}"
+
+# - name: create desktop entry
+#   template:
+#     src: app.desktop.j2
+#     dest: "{{ desktop_app_dir }}/{{ item.item.name }}.desktop"
+#   vars:
+#     app_name: "{{ item.item.name }}"
+#     app_generic_name: "{{ item.item.generic_name | default('') }}"
+#     app_comment: "{{ item.item.comment | default('') }}"
+#     app_bin: "{{ appimage_dir }}/{{ item.item.name }}.AppImage"
+#     app_class: "{{ item.item.name }}"
+#     app_categories:
+#   with_items: "{{ appimg_files.results }}"

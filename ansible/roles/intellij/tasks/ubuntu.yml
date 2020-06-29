@@ -17,6 +17,7 @@
           - Osmorc
           - PerforceDirectPlugin
           - Resin
+          - Subversion
           - TestNG-J
           - WebSphere
           - Weblogic
@@ -27,11 +28,13 @@
           - com.intellij.flex
           - com.intellij.guice
           - com.intellij.gwt
-          - com.intellij.ideolog
+          - com.intellij.helidon
           - com.intellij.jboss.arquillian
           - com.intellij.jboss.core
           - com.intellij.jbpm
+          - com.intellij.micronaut
           - com.intellij.play
+          - com.intellij.quarkus
           - com.intellij.seam
           - com.intellij.seam.pageflow
           - com.intellij.seam.pages
@@ -52,15 +55,15 @@
           - org.jetbrains.plugins.gradle
           - org.jetbrains.plugins.javaFX
         intellij_plugins:
+          - CheckStyle-IDEA
           - com.atlassian.bitbucket.references
+          - com.jetbrains.darkPurpleTheme
+          - indent-rainbow.indent-rainbow
+          - io.mateu.lombok-plugin
+          - org.jetbrains.plugins.vue
+          - org.sonarlint.idea
           - org.zalando.intellij.swagger
           - sonnenhut.liveedit.patch
-          - io.mateu.lombok-plugin
-          - org.sonarlint.idea
-          - org.jetbrains.plugins.vue
-          - CheckStyle-IDEA
-          - com.jetbrains.darkPurpleTheme
-          # - com.jetbrains.lightTheme
 
 # - name: create settings repostitory directory
 #   file: path="{{ intellij_settings_repo_dir }}" state=directory
@@ -72,3 +75,14 @@
 #     accept_hostkey: yes
 #     update: no
 #   when: (intellij_settings_repo_url is defined) and (intellij_settings_repo_url|length > 0)
+
+- file:
+    path: /opt/idea
+    group: sys
+    recurse: yes
+    mode: g+rw
+  become: yes
+  register: idea_perm
+
+- shell: find /opt/idea -type d -exec chmod g+s '{}' ';'
+  when: idea_perm.changed
