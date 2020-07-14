@@ -1,0 +1,2 @@
+android_sdk_url: "https://r4---sn-2gb7sn7r.gvt1.com/edgedl/android/studio/ide-zips/4.0.0.16/android-studio-ide-193.6514223-linux.tar.gz"
+android_sdk_local: "{{ download_dir }}/{{ android_sdk_url | basename }}"

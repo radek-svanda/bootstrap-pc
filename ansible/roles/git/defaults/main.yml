@@ -2,5 +2,6 @@
 
 git_bash_prompt: yes
 git_bash_fallback: yes
+git_fuzzy: yes
 
 kdiff_path: kdiff3

@@ -5,8 +5,21 @@
     append: yes
   become: yes
 
+- name: set bigger watch limit
+  lineinfile:
+    path: /etc/sysctl.conf
+    line: fs.inotify.max_user_watches = 524288
+  register: inotify_update
+  become: yes
+
+- name: reload configuration
+  command: sysctl -p --system
+  become: yes
+  when: inotify_update.changed
+
 - include_tasks: apt.yml
 - include_tasks: debs.yml
 - include_tasks: flatpak.yml
 - include_tasks: snaps.yml
 - include_tasks: appimage.yml
+- include_tasks: brews.yml

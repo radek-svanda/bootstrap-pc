@@ -6,9 +6,52 @@
 # https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/
 # $ inxi -Fxxxz
 
+# -------- take three
+
 # https://github.com/thebitstick/surfacego-wifi
 
-# ------------ already part of linux 5.1
+
+- file: path=/opt/wifi-driver state=directory
+  become: yes
+
+- get_url:
+    url: http://www.killernetworking.com/support/K1535_Debian/board.bin
+    dest: /opt/wifi-driver/board.bin
+    force: no
+  become: yes
+  register: board_firmware
+
+- copy:
+    src: wifi-firmware/opt/wifi-driver/script
+    dest: /opt/wifi-driver/script
+    mode: u+x
+  become: yes
+
+- shell: /opt/wifi-driver/script
+  become: yes
+  when: board_firmware.changed
+
+- copy:
+    src: "wifi-firmware/etc/systemd/system/{{ item }}"
+    dest: "/etc/systemd/system/{{ item }}"
+  with_items:
+    - surfacego-wifi.path
+    - surfacego-wifi.service
+  become: yes
+
+- systemd:
+    name: sourfacego-wifi.path
+    enabled: yes
+    daemon_reload: yes
+  become: yes
+
+# -------- second take: not working
+# $ sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi
+# $ sudo apt-get update
+# $ sudo apt-get install backport-iwlwifi-dkms
+# $ reboot
+
+# ------------ already part of linux 5.1: not working
 
 # - include_vars: 'wifi-firmware.yml'
 

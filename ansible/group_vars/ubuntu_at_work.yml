@@ -12,23 +12,26 @@ packages:
   - name: firefox
   - name: gimp
   - name: gnome-calculator
+  - name: gnome-disk-utility
   - name: gnome-photos
   - name: gnupg-agent
   - name: htop
+  - name: jpegoptim
   - name: jq
   - name: libreoffice
+  - name: libxml2-utils
   - name: net-tools
   - name: pinta
   - name: postgresql-client
   - name: python-is-python3
   - name: python3-pip
+  - name: rawtherapee
   - name: software-properties-common
   - name: vim
   - name: vlc
-  - name: xdotool
-
+  - name: whois
   - name: wireshark-qt
-  - name: libxml2-utils
+  - name: xdotool
 
   # - name: default-jre
   # - name: vagrant
@@ -62,16 +65,17 @@ packages:
     ppa: ppa:appimagelauncher-team/stable
 
 flatpaks:
-#   - name: com.getpostman.Postman
-#   - name: com.github.calo001.fondo
-#   - name: com.skype.Client
+  # - name: com.github.alainm23.planner
+  - name: com.gigitux.gtkwhats
+  - name: com.skype.Client
   - name: com.slack.Slack
   - name: com.spotify.Client
   - name: io.dbeaver.DBeaverCommunity
-  - name: io.dbeaver.DBeaverCommunity.Client.pgsql
   - name: io.dbeaver.DBeaverCommunity.Client.mariadb
+  - name: io.dbeaver.DBeaverCommunity.Client.pgsql
+#   - name: com.getpostman.Postman
+#   - name: com.github.calo001.fondo
 #   - name: com.toggl.TogglDesktop
-  - name: com.gigitux.gtkwhats
 
 snaps:
   - name: authy
@@ -107,9 +111,12 @@ sdks:
     global: '3.6.3'
   - name: "github-cli"
     versions:
-      - '0.9.0'
-    global: '0.9.0'
+      - '0.10.1'
+    global: '0.10.1'
   - name: 'yarn'
     versions:
       - '1.22.4'
     global: '1.22.4'
+
+brews:
+  - name: fzf

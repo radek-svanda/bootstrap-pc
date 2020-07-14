@@ -1,8 +1,12 @@
 - stat: path="{{ user_home_dir }}/.asdf/bin/asdf"
   register: asdf_exists_result
 
+- apt: name=build-essential status=present
+  become: yes
+
 - import_role: name=cimon-io.asdf
   vars:
+    asdf_version: v0.7.8
     asdf_user: "{{ user_name }}"
     asdf_plugins: "{{ sdks }}"
   # when: asdf_exists_result == False

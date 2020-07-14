@@ -8,6 +8,10 @@
   include_tasks: bash-fallback.yml
   when: git_bash_fallback|default(false)|bool == true
 
+- name: configure git fuzzy
+  include_tasks: git-fuzzy.yml
+  when: git_fuzzy|default(false)|bool == true
+
 - name: install git tools
   become: yes
   apt:
@@ -15,5 +19,5 @@
       - kdiff3
       - meld
 
-- name: create git config
-  include_tasks: git-config.yml
+# - name: create git config
+#   include_tasks: git-config.yml

@@ -1,0 +1,38 @@
+- name: install homebrew
+  become: yes
+  git:
+    repo: https://github.com/Homebrew/brew.git
+    dest: /usr/local/lib/brew
+    version: 2.4.3
+
+- name: create working directories
+  become: yes
+  file:
+    path: '{{ item }}'
+    state: directory
+    group: sys
+    mode: g+rws
+  with_items:
+    - /usr/local/lib/brew/Library
+    - /usr/local/var
+    - /usr/local/bin
+    - /usr/local/etc
+    - /usr/local/include
+    - /usr/local/lib
+    - /usr/local/sbin
+    - /usr/local/share
+    - /usr/local/share/man
+    - /usr/local/opt
+    - /usr/local/Cellar
+
+- name: add homebrew to path
+  become: yes
+  file:
+    src: /usr/local/lib/brew/bin/brew
+    dest: /usr/local/bin/brew
+    state: link
+
+- homebrew:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ brews }}"

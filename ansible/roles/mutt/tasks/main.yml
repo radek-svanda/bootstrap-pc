@@ -33,3 +33,6 @@
 # configure notmuch
 
 # html preview - copy file first, return asap, delete on close
+
+# geary:
+# $ curl https://gitlab.gnome.org/GNOME/gnome-keyring/raw/ff229abca62db366c84dfe58035324f6d8ca6059/pkcs11/rpc-layer/gnome-keyring.module.in > ~/.config/pkcs11/modules/gnome-keyring.module

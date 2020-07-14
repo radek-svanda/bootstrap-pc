@@ -1,3 +1,4 @@
 - template:
     src: gitconfig.j2
     dest: ~/.gitconfig
+    force: no

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+CD="/usr/lib/firmware/ath10k/QCA6174/hw3.0/board.bin"
+BD="/usr/lib/firmware/ath10k/QCA6174/hw3.0/board-2.bin"
+PD="/opt/wifi-driver/board.bin"
+
+SUFFIX=`date -Iseconds`
+if [ -e $PD ]; then
+	mv $CD $CD.$SUFFIX
+    cp $PD $CD
+fi
+
+if [ -e $BD ]; then
+	mv $BD $BD.$SUFFIX
+fi

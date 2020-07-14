@@ -1,0 +1,13 @@
+- name: install dependencies
+  become: yes
+  apt: name=fzf
+
+- name: clone git-fuzzy
+  git:
+    repo: https://github.com/bigH/git-fuzzy.git
+    dest: '{{ user_home_dir }}/.git-fuzzy'
+
+- name: add git-fuzzy to path
+  lineinfile:
+    path: '{{ user_home_dir }}/.bashrc'
+    line: 'export PATH={{ user_home_dir }}/.git-fuzzy/bin:$PATH'
