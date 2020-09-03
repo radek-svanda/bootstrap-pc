@@ -29,3 +29,9 @@
   with_items: "{{ flatpaks }}"
   when: flatpaks is defined and not item.name in flatpaks_installed.stdout_lines
   become: yes
+
+- name: override filesystem access
+  shell: "flatpak override {{ item.name }} --filesystem={{ item.filesystem }}"
+  become: yes
+  changed_when: false
+  with_items: "{{ flatpak_filesystems }}"

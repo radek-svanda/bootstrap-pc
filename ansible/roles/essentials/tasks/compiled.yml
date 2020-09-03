@@ -1,0 +1,5 @@
+
+- include_tasks: compiled-item.yml
+  vars:
+    package: "{{ item }}"
+  with_items: "{{ compiled }}"

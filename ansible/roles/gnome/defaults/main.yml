@@ -13,3 +13,5 @@ extensions_from_git:
   - id: sound-output-device-chooser@kgshank.net
     url: https://github.com/kgshank/gse-sound-output-device-chooser.git
     build: 'mv sound-output-device-chooser@kgshank.net/* .'
+  - id: Resource_Monitor@Ory0n
+    url: https://github.com/Ory0n/Resource_Monitor.git

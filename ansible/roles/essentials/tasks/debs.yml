@@ -20,4 +20,4 @@
   apt: deb="{{ item.invocation.module_args.path }}" only_upgrade=yes
   with_items: "{{ deb_files.results }}"
   become: yes
-  when: (not item.stat.exists and item.item.upgrade != no) or not item.item.name in apt_packages.stdout_lines
+  when: not item.stat.exists or item.item.upgrade or not item.item.name in apt_packages.stdout_lines

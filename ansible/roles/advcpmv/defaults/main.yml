@@ -1,0 +1,7 @@
+coreutils_version: "8.30"
+coreutils_url: "https://ftp.gnu.org/gnu/coreutils/coreutils-{{ coreutils_version }}.tar.xz"
+coreutils_local: "{{ download_dir }}/{{ coreutils_url | basename }}"
+coreutils_dest: "{{ temp_dir }}"
+coreutils_src: "{{ temp_dir }}/coreutils-{{ coreutils_version }}"
+coreutils_patch_url: "https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-{{ coreutils_version }}.patch"
+coreutils_patch_dest: "{{ coreutils_src }}/{{ coreutils_patch_url | basename }}"

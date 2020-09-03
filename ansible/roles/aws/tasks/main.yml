@@ -1,12 +1,37 @@
 
+- apt:
+    name:
+      - python3
+      - awscli
+      - stunnel
+  become: yes
+
 - pip:
-    name: "{{ item }}"
+    name:
+      - aws-mfa
+      - git-remote-codecommit
     executable: pip3
   become: yes
-  with_items:
-    - aws-mfa
-    - git-remote-codecommit
+
+# ssm tool
+
+- pip:
+    name:
+      - boto3==1.13.6
+      - prettytable==0.7.2
+      - python-dateutil==2.8.1
+    executable: pip3
 
 - apt:
-    name: awscli
+    deb: https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb
   become: yes
+
+- file: path="{{ user_bin_dir }}" state=directory
+
+- get_url:
+    url: "{{ item }}"
+    dest: "{{ user_bin_dir }}/{{ item | basename }}"
+    mode: u+x
+  with_items:
+    - https://raw.githubusercontent.com/elpy1/ssm-tool/master/ssm-tool
+    - https://raw.githubusercontent.com/elpy1/ssh-over-ssm/master/ssh-ssm.sh

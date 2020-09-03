@@ -1,0 +1,12 @@
+
+- debug: var=package
+- apt:
+    name: "{{ package.dependencies }}"
+    state: present
+    dpkg_options: force-downgrade
+  become: yes
+
+- git:
+    repo: "{{ package.repo }}"
+    dest: "{{ download_dir }}/{{ package.name }}"
+    version: "{{ package.version }}"

@@ -5,3 +5,5 @@ repo_urls: "{{ packages | json_query('[?repo]') | map(attribute='repo') | list |
 ppa_repos: "{{ packages | json_query('[?ppa]') | map(attribute='ppa') | list | sort | unique }}"
 
 appimage_dir: "{{ user_home_dir }}/Apps"
+
+flatpak_filesystems: "{{ flatpaks | json_query('[?filesystem]') | list }}"

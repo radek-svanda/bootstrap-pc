@@ -1,0 +1,45 @@
+- get_url:
+    url: "{{ coreutils_url }}"
+    dest: "{{ coreutils_local }}"
+    force: no
+
+- file: path="{{ coreutils_dest }}" state=directory
+
+- unarchive:
+    src: "{{ coreutils_local }}"
+    dest: "{{ coreutils_dest }}"
+    creates: "{{ coreutils_src }}"
+
+- get_url:
+    url: "{{ coreutils_patch_url }}"
+    dest: "{{ coreutils_patch_dest }}"
+    force: no
+
+- name: patch coreutils
+  patch:
+    basedir: "{{ coreutils_src }}"
+    src: "{{ coreutils_patch_dest }}"
+    strip: 1
+    backup: yes
+
+- name: configure coreutils
+  shell: ./configure
+  args:
+    chdir: "{{ coreutils_src }}"
+    creates: "{{ coreutils_src }}/Makefile"
+
+- name: make coreutils
+  shell: make
+  args:
+    chdir: "{{ coreutils_src }}"
+    creates: "{{ coreutils_src }}/src/cp"
+
+- name: install cp/mv
+  copy:
+    src: "{{ coreutils_src }}/src/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}g"
+    mode: a+x
+  with_items:
+    - cp
+    - mv
+  become: yes

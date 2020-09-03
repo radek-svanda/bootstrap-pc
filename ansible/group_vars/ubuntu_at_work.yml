@@ -33,6 +33,9 @@ packages:
   - name: wireshark-qt
   - name: xdotool
 
+  - name: nautilus-admin
+  - name: ttf-mscorefonts-installer
+
   # - name: default-jre
   # - name: vagrant
   # - name: virtualbox
@@ -67,24 +70,32 @@ packages:
 flatpaks:
   # - name: com.github.alainm23.planner
   - name: com.gigitux.gtkwhats
+  - name: com.github.calo001.fondo
   - name: com.skype.Client
   - name: com.slack.Slack
+    filesystem: home
   - name: com.spotify.Client
   - name: io.dbeaver.DBeaverCommunity
   - name: io.dbeaver.DBeaverCommunity.Client.mariadb
   - name: io.dbeaver.DBeaverCommunity.Client.pgsql
 #   - name: com.getpostman.Postman
-#   - name: com.github.calo001.fondo
 #   - name: com.toggl.TogglDesktop
+
+  - name: com.github.tchx84.Flatseal
+  - name: de.haeckerfelix.Fragments
+  - name: de.haeckerfelix.Shortwave
 
 snaps:
   - name: authy
+  - name: scrcpy
+  - name: get-iplayer
+  - name: gping
+  - name: tizonia
 
 debs:
-  # - name: keeweb-desktop
-  #   url: https://github.com/keeweb/keeweb/releases/download/v1.14.2/KeeWeb-1.14.2.linux.x64.deb
   - name: protonmail-bridge
-    url: https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
+    url: https://protonmail.com/download/protonmail-bridge_1.3.3-1_amd64.deb
+    upgrade: yes
   - name: google-chrome-stable
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     upgrade: no
@@ -94,6 +105,25 @@ appimages:
     url: https://github.com/Automattic/simplenote-electron/releases/download/v1.17.0/Simplenote-linux-1.17.0-x86_64.AppImage
   - name: Timeular
     url: https://s3.amazonaws.com/timeular-desktop-packages/linux/production/Timeular.AppImage
+
+# compiled:
+#   - name: nasc
+#     repo: https://github.com/parnold-x/nasc.git
+#     version: 0.7.3
+#     dependencies:
+#       # - gobject-introspection
+#       # - libgirepository-1.0-1=1.64.0-2
+#       # - libgee-0.8-dev
+#       # - libwebkit2gtk-4.0-dev
+#       # - libatk-bridge2.0-0=2.34.1-3
+#       # - libgtksourceview-3.0-dev
+#       # - libcln-dev
+#       # - libgranite-dev
+#       # - libcurl4-openssl-dev
+#       # - libmpfr-dev
+#       - intltool
+#       - meson
+#       - valac
 
 sdks:
   - name: "java"
@@ -120,3 +150,9 @@ sdks:
 
 brews:
   - name: fzf
+  - name: sops
+  - name: terraform
+
+pips:
+  - name: khal
+  - name: vdirsyncer
