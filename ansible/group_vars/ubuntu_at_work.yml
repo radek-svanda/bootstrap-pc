@@ -35,6 +35,8 @@ packages:
 
   - name: nautilus-admin
   - name: ttf-mscorefonts-installer
+  - name: speedtest-cli
+  - name: ffmpeg
 
   # - name: default-jre
   # - name: vagrant
@@ -67,6 +69,9 @@ packages:
   - name: appimagelauncher
     ppa: ppa:appimagelauncher-team/stable
 
+  - name: unetbootin
+    ppa: ppa:gezakovacs/ppa
+
 flatpaks:
   # - name: com.github.alainm23.planner
   - name: com.gigitux.gtkwhats
@@ -83,7 +88,10 @@ flatpaks:
 
   - name: com.github.tchx84.Flatseal
   - name: de.haeckerfelix.Fragments
+    filesystem: home
   - name: de.haeckerfelix.Shortwave
+  - name: org.filezillaproject.Filezilla
+  - name: work.openpaper.Paperwork
 
 snaps:
   - name: authy
@@ -91,13 +99,20 @@ snaps:
   - name: get-iplayer
   - name: gping
   - name: tizonia
+  - name: youtube-dl
 
 debs:
   - name: protonmail-bridge
-    url: https://protonmail.com/download/protonmail-bridge_1.3.3-1_amd64.deb
+    url: https://protonmail.com/download/protonmail-bridge_1.4.5-1_amd64.deb
     upgrade: yes
   - name: google-chrome-stable
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    upgrade: no
+  - name: dive
+    url: https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
+    upgrade: no
+  - name: notable
+    url: https://download.notable.app/?target=deb
     upgrade: no
 
 appimages:
@@ -152,6 +167,8 @@ brews:
   - name: fzf
   - name: sops
   - name: terraform
+  # - name: speedtest
+  #   tap: teamookla/speedtest
 
 pips:
   - name: khal

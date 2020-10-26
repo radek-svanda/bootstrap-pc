@@ -7,3 +7,5 @@ ppa_repos: "{{ packages | json_query('[?ppa]') | map(attribute='ppa') | list | s
 appimage_dir: "{{ user_home_dir }}/Apps"
 
 flatpak_filesystems: "{{ flatpaks | json_query('[?filesystem]') | list }}"
+
+taps: "{{ brews | json_query('[?tap]') | map(attribute='tap') | list | sort | unique }}"

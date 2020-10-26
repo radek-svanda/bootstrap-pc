@@ -5,6 +5,7 @@
       - w3m
       - libnotify-bin
       - notmuch
+      - ripmime
   become: yes
 
 - apt:

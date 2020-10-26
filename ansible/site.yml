@@ -6,7 +6,7 @@
     - group_vars/ubuntu_at_work.yml
     - secrets.yml
   roles:
-    # - role: essentials
+    - role: essentials
     # - role: onedrive
     # - role: gnome
     #   nautilus_bookmarks:
@@ -28,7 +28,7 @@
     # - role: xps
     # - role: fma
     # - role: aws
-    - role: advcpmv
+    # - role: advcpmv
 
 - hosts: pop_at_work
   vars_files:

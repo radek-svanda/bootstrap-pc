@@ -15,3 +15,10 @@
       value: "'new-session'"
 
 # https://gnunn1.github.io/tilix-web/manual/vteconfig/
+
+# /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding
+#   '<Super>t'
+# /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command
+#   'tilix'
+# /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name
+#   'Tilix'

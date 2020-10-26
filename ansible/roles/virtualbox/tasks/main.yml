@@ -1,0 +1,6 @@
+# install virtualbox
+# install virtualbox-ext-pack - needs accept licence
+
+https://www.linuxbabe.com/virtualbox/access-usb-from-virtualbox-guest-os
+
+sudo gpasswd -a yourusername vboxusers
