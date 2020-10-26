@@ -1,0 +1,3 @@
+- pip:
+    name: "{{ item.name }}"
+  with_items: "{{pips}}"

@@ -6,7 +6,7 @@
     - group_vars/ubuntu_at_work.yml
     - secrets.yml
   roles:
-    # - role: essentials
+    - role: essentials
     # - role: onedrive
     # - role: gnome
     #   nautilus_bookmarks:
@@ -29,6 +29,20 @@
     # - role: fma
     # - role: aws
     - role: advcpmv
+
+- hosts: debian_at_home
+  vars_files:
+    - group_vars/debian.yml
+    - group_vars/debian_at_home.yml
+    - secrets.yml
+  roles:
+          #- role: essentials
+      #- role: keepass
+      #keepass_sync: no
+      #- role: jetbrains-mono
+      #- role: sublime
+      #- role: tilix
+    - role: emma-desktop
 
 - hosts: pop_at_work
   vars_files:

@@ -33,3 +33,11 @@
   with_items: "{{ packages }}"
   become: yes
   when: not item.name in apt_packages.stdout_lines
+
+- name: explicit packages
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items: "{{ apt_explicit }}"
+  become: yes
+
