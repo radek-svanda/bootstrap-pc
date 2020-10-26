@@ -1,3 +1,7 @@
 
 gnome_extensions_dir: '/home/emma/.local/share/gnome-shell/extensions'
 
+shortcuts:
+  - id: decko
+    name: Déčko
+    url: https://decko.ceskatelevize.cz/
