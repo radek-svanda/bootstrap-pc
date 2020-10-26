@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name={{ name }}
-Type=Link
-URL={{ url }}
-Icon={{ id }}
+Name={{ item.name }}
+Type=Application
+Terminal=false
+Exec=xdg-open {{ item.url }}
+Icon={{ item.id }}
