@@ -18,6 +18,7 @@ packages:
   - name: whois
   - name: python3-pip
   - name: python-pip
+  - name: powertop
 
   - name: gnome-shell-extension-desktop-icons
     state: absent
@@ -228,6 +229,9 @@ packages:
     state: absent
   - name: gnome-tetravex
     state: absent
+
+  - name: timekpr-next
+    ppa: ppa:mjasnik/ppa
 
 debs:
   - name: google-chrome-stable

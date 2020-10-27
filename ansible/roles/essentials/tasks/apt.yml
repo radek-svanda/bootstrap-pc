@@ -38,6 +38,7 @@
   apt:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  with_items: "{{ apt_explicit }}"
+  with_items: "{{ apt_remove }}"
   become: yes
+  when: item.name in apt_packages.stdout_lines
 

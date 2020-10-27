@@ -43,6 +43,7 @@
       #- role: sublime
       #- role: tilix
     - role: emma-desktop
+    - role: l502x
 
 - hosts: pop_at_work
   vars_files:

@@ -3,7 +3,7 @@
 repo_keys: "{{ packages | json_query('[?key]') | map(attribute='key') | list | sort | unique }}"
 repo_urls: "{{ packages | json_query('[?repo]') | map(attribute='repo') | list | sort | unique }}"
 ppa_repos: "{{ packages | json_query('[?ppa]') | map(attribute='ppa') | list | sort | unique }}"
-apt_explicit: "{{ packages | json_query('[?state]') | list }}"
+apt_remove: "{{ packages | json_query('[?state]') | list }}"
 
 appimage_dir: "{{ user_home_dir }}/Apps"
 

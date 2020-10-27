@@ -29,6 +29,13 @@
     - key: /org/gnome/desktop/wm/preferences/button-layout
       value: "'appmenu:minimize,maximize,close'"
 
+    # disable screen locking
+    - key: /org/gnome/desktop/screensaver/lock-enabled
+      value: "false"
+    - key: /org/gnome/desktop/notifications/show-in-lock-screen
+      value: "false"
+
+    # extensions
     - key: /org/gnome/shell/enabled-extensions
       value: "['dash-to-dock@micxgx.gmail.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'nohotcorner@azuri.free.fr']"
     # dash-to-dock
