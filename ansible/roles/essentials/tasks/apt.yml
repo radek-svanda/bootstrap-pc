@@ -1,4 +1,3 @@
-
 - name: read packages
   shell: dpkg -l | grep "^ii" | awk '{ print $2 }' | sed 's/:amd64//'
   register: apt_packages
@@ -30,7 +29,7 @@
   apt:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
-  with_items: "{{ packages }}"
+  with_items: "{{ apt_install }}"
   become: yes
   when: not item.name in apt_packages.stdout_lines
 

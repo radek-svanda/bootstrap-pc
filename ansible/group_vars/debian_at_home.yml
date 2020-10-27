@@ -34,6 +34,17 @@ packages:
     state: absent
   - name: mlterm
     state: absent
+  - name: mlterm-tiny
+    state: absent
+  - name: xterm
+    state: absent
+  - name: mpv
+    state: absent
+  - name: gnome-maps
+    state: absent
+  - name: gnome-music
+    state: absent
+
   - name: task-thai-gnome-desktop
     state: absent
   - name: task-thai-desktop
@@ -229,9 +240,6 @@ packages:
     state: absent
   - name: gnome-tetravex
     state: absent
-
-  - name: timekpr-next
-    ppa: ppa:mjasnik/ppa
 
 debs:
   - name: google-chrome-stable
