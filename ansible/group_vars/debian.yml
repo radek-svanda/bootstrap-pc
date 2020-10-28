@@ -1,0 +1,12 @@
+user_home_dir: "{{ ansible_env.HOME }}"
+user_config_dir: "{{ user_home_dir }}/.config"
+user_local_dir: "{{ user_home_dir }}/.local"
+download_dir: "{{ user_home_dir }}/.ansible/tmp/downloads"
+temp_dir: "{{ user_home_dir }}/.ansible/tmp"
+desktop_app_dir: "{{ user_local_dir }}/share/applications"
+desktop_icons_dir: "{{ user_local_dir }}/share/icons"
+user_bin_dir: "{{ user_home_dir }}/bin"
+
+github_dir: "{{ user_home_dir }}/Github"
+
+local_fonts: "{{ user_local_dir }}/share/fonts"

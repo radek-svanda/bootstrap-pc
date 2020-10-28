@@ -8,17 +8,22 @@
 - file: path="{{ item }}" state=directory
   with_items:
     - "{{ user_config_dir }}/systemd/user"
+  when: keepass_sync
 
 - name: configure keepass service
-  copy: src="{{ item }}" dest="{{ user_config_dir }}/systemd/user/{{ item }}"
+  copy: 
+    src: "{{ item }}"
+    dest: "{{ user_config_dir }}/systemd/user/{{ item }}"
   with_items:
     - keepass.service
     - keepass.timer
+  when: keepass_sync
 
 - name: enable keepass service timer
   systemd:
     name: keepass.timer
     enabled: yes
     user: yes
+  when: keepass_sync
 
 # secret-tool store --label="KeePass" keepass NewDatabase

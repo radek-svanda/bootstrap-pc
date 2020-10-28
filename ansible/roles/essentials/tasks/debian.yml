@@ -1,0 +1,15 @@
+
+- user:
+    name: '{{ user_name }}'
+    groups: sys
+    append: yes
+  become: yes
+
+- include_tasks: apt.yml
+- include_tasks: debs.yml
+- include_tasks: pips.yml
+# - include_tasks: flatpak.yml
+# - include_tasks: snaps.yml
+# - include_tasks: appimage.yml
+# - include_tasks: brews.yml
+# - include_tasks: compiled.yml

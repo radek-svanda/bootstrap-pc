@@ -20,6 +20,7 @@
       - gpaste
       - gnome-shell-extensions-gpaste
       - gnome-shell-extension-hide-activities
+      - gnome-sushi
 
 - include: 'extensions.yml'
 

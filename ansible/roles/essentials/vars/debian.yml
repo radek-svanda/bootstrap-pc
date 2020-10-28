@@ -1,0 +1,11 @@
+
+# repo_packages: "{{ packages | json_query(\"[?type=='repo']\") | list }}"
+repo_keys: "{{ packages | json_query('[?key]') | map(attribute='key') | list | sort | unique }}"
+repo_urls: "{{ packages | json_query('[?repo]') | map(attribute='repo') | list | sort | unique }}"
+ppa_repos: "{{ packages | json_query('[?ppa]') | map(attribute='ppa') | list | sort | unique }}"
+apt_remove: "{{ packages | json_query('[?state]') | list }}"
+apt_install: "{{ packages | selectattr('state', 'undefined') | list }}"
+
+appimage_dir: "{{ user_home_dir }}/Apps"
+
+flatpak_filesystems: "{{ flatpaks | json_query('[?filesystem]') | list }}"

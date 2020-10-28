@@ -1,0 +1,250 @@
+ansible_connection: local
+
+packages:
+  - name: apt-transport-https
+  - name: aptitude
+  - name: ca-certificates
+  - name: curl
+  - name: dconf-editor
+  - name: dos2unix
+  - name: gnome-calculator
+  - name: gnome-disk-utility
+  - name: gnome-photos
+  - name: gnupg-agent
+  - name: htop
+  - name: jpegoptim
+  - name: vim
+  - name: vlc
+  - name: whois
+  - name: python3-pip
+  - name: python-pip
+  - name: powertop
+
+  - name: gnome-shell-extension-desktop-icons
+    state: absent
+  - name: yelp
+    state: absent
+  - name: apport
+    state: absent
+  - name: apport-gtk
+    state: absent
+  - name: evolution
+    state: absent
+  - name: thunderbird
+    state: absent
+  - name: mlterm
+    state: absent
+  - name: mlterm-tiny
+    state: absent
+  - name: xterm
+    state: absent
+  - name: mpv
+    state: absent
+  - name: gnome-maps
+    state: absent
+  - name: gnome-music
+    state: absent
+
+  - name: task-thai-gnome-desktop
+    state: absent
+  - name: task-thai-desktop
+    state: absent
+  - name: xiterm+thai
+    state: absent
+  - name: task-albanian-desktop
+    state: absent
+  - name: task-amharic-desktop
+    state: absent
+  - name: task-arabic-desktop
+    state: absent
+  - name: task-asturian-desktop
+    state: absent
+  - name: task-basque-desktop
+    state: absent
+  - name: task-belarusian-desktop
+    state: absent
+  - name: task-bengali-desktop
+    state: absent
+  - name: task-bosnian-desktop
+    state: absent
+  - name: task-brazilian-portuguese-desktop
+    state: absent
+  - name: task-british-desktop
+    state: absent
+  - name: task-bulgarian-desktop
+    state: absent
+  - name: task-catalan-desktop
+    state: absent
+  - name: task-chinese-s-desktop
+    state: absent
+  - name: task-chinese-t-desktop
+    state: absent
+  - name: task-croatian-desktop
+    state: absent
+  - name: task-cyrillic-desktop
+    state: absent
+  - name: task-danish-desktop
+    state: absent
+  - name: task-dutch-desktop
+    state: absent
+  - name: task-dzongkha-desktop
+    state: absent
+  - name: task-esperanto-desktop
+    state: absent
+  - name: task-estonian-desktop
+    state: absent
+  - name: task-finnish-desktop
+    state: absent
+  - name: task-french-desktop
+    state: absent
+  - name: task-galician-desktop
+    state: absent
+  - name: task-georgian-desktop
+    state: absent
+  - name: task-german-desktop
+    state: absent
+  - name: task-greek-desktop
+    state: absent
+  - name: task-gujarati-desktop
+    state: absent
+  - name: task-hebrew-desktop
+    state: absent
+  - name: task-hebrew-gnome-desktop
+    state: absent
+  - name: task-hindi-desktop
+    state: absent
+  - name: task-hungarian-desktop
+    state: absent
+  - name: task-icelandic-desktop
+    state: absent
+  - name: task-indonesian-desktop
+    state: absent
+  - name: task-irish-desktop
+    state: absent
+  - name: task-italian-desktop
+    state: absent
+  - name: task-japanese-desktop
+    state: absent
+  - name: task-japanese-gnome-desktop
+    state: absent
+  - name: task-kannada-desktop
+    state: absent
+  - name: task-kazakh-desktop
+    state: absent
+  - name: task-khmer-desktop
+    state: absent
+  - name: task-korean-desktop
+    state: absent
+  - name: task-korean-gnome-desktop
+    state: absent
+  - name: task-kurdish-desktop
+    state: absent
+  - name: task-latvian-desktop
+    state: absent
+  - name: task-lithuanian-desktop
+    state: absent
+  - name: task-macedonian-desktop
+    state: absent
+  - name: task-malayalam-desktop
+    state: absent
+  - name: task-malayalam-gnome-desktop
+    state: absent
+  - name: task-marathi-desktop
+    state: absent
+  - name: task-nepali-desktop
+    state: absent
+  - name: task-northern-sami-desktop
+    state: absent
+  - name: task-norwegian-desktop
+    state: absent
+  - name: task-persian-desktop
+    state: absent
+  - name: task-polish-desktop
+    state: absent
+  - name: task-portuguese-desktop
+    state: absent
+  - name: task-punjabi-desktop
+    state: absent
+  - name: task-romanian-desktop
+    state: absent
+  - name: task-russian-desktop
+    state: absent
+  - name: task-serbian-desktop
+    state: absent
+  - name: task-sinhala-desktop
+    state: absent
+  - name: task-slovak-desktop
+    state: absent
+  - name: task-slovenian-desktop
+    state: absent
+  - name: task-south-african-english-desktop
+    state: absent
+  - name: task-spanish-desktop
+    state: absent
+  - name: task-swedish-desktop
+    state: absent
+  - name: task-tamil-desktop
+    state: absent
+  - name: task-tamil-gnome-desktop
+    state: absent
+  - name: task-telugu-desktop
+    state: absent
+  - name: task-telugu-gnome-desktop
+    state: absent
+  - name: task-turkish-desktop
+    state: absent
+  - name: task-ukrainian-desktop
+    state: absent
+  - name: task-uyghur-desktop
+    state: absent
+  - name: task-vietnamese-desktop
+    state: absent
+  - name: task-welsh-desktop
+    state: absent
+  - name: task-xhosa-desktop
+    state: absent
+
+  - name: tali
+    state: absent
+  - name: five-or-more
+    state: absent
+  - name: four-in-a-row
+    state: absent
+  - name: gnome-nibbles
+    state: absent
+  - name: hitori
+    state: absent
+  - name: aisleriot
+    state: absent
+  - name: gnome-klotski
+    state: absent
+  - name: gnome-mahjongg
+    state: absent
+  - name: gnome-mines
+    state: absent
+  - name: gnome-robots
+    state: absent
+  - name: gnome-sudoku
+    state: absent
+  - name: gnome-taquin
+    state: absent
+  - name: gnome-chess
+    state: absent
+  - name: iagno
+    state: absent
+  - name: lightsoff
+    state: absent
+  - name: quadrapassel
+    state: absent
+  - name: swell-foop
+    state: absent
+  - name: gnome-tetravex
+    state: absent
+
+debs:
+  - name: google-chrome-stable
+    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    upgrade: no
+
+pips:
+  - name: psutil
