@@ -1,7 +1,16 @@
 
 gnome_extensions_dir: '/home/emma/.local/share/gnome-shell/extensions'
+emma_app_dir: /home/emma/.local/share/applications
+emma_icon_dir: /home/emma/.local/share/icons
 
 shortcuts:
   - id: decko
     name: Déčko
     url: https://decko.ceskatelevize.cz/
+  - id: outlook
+    name: Pošta
+    url: https://outlook.live.com/mail/
+  - id: meet
+    name: Meet
+    url: https://apps.google.com/meet/
+

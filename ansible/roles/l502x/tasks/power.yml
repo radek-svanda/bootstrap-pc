@@ -1,0 +1,18 @@
+
+- name: install powertop
+  become: yes
+  apt: name=powertop state=present
+
+- name: create powertop autotune service
+  become: yes
+  copy:
+    src: powertop.service
+    dest: /etc/systemd/system/powertop.service
+
+- name: reload systemd
+  become: yes
+  systemd: daemon_reload=yes
+
+- name: systemd enable powertop autotune
+  become: yes
+  systemd: enabled=yes name=powertop.service

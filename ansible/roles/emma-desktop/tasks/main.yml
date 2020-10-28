@@ -29,6 +29,13 @@
     - key: /org/gnome/desktop/wm/preferences/button-layout
       value: "'appmenu:minimize,maximize,close'"
 
+    # disable screen locking
+    - key: /org/gnome/desktop/screensaver/lock-enabled
+      value: "false"
+    - key: /org/gnome/desktop/notifications/show-in-lock-screen
+      value: "false"
+
+    # extensions
     - key: /org/gnome/shell/enabled-extensions
       value: "['dash-to-dock@micxgx.gmail.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'nohotcorner@azuri.free.fr']"
     # dash-to-dock
@@ -45,19 +52,24 @@
       value: "'app-icon-only'"
 
     - key: /org/gnome/shell/favorite-apps
-      value: "['firefox-esr.desktop', 'org.gnome.Nautilus.desktop']"
+      value: "['firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'decko.desktop', 'meet.desktop', 'outlook.desktop']"
 
   become: yes
   become_user: emma
 
-- file: path="{{ desktop_icons_dir }}/hicolor/512x512"
+- file: 
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ emma_icon_dir }}"
+    - "{{ emma_app_dir }}"
   become: yes
   become_user: emma
 
 - name: copy icons
   copy:
     src: "icons/{{ item.id }}.png"
-    dest: "{{ desktop_icons_dir }}/hicolor/512x512/{{ item.id }}.png"
+    dest: "{{ emma_icon_dir }}/{{ item.id }}.png"
   with_items: "{{ shortcuts }}"
   become: yes
   become_user: emma
@@ -65,7 +77,8 @@
 - name: create launchers
   template:
     src: shortcut.desktop.j2
-    dest: "{{ desktop_apps_dir }}/{{ item.id }}.desktop"
+    dest: "{{ emma_app_dir }}/{{ item.id }}.desktop"
   with_items: "{{ shortcuts }}"
   become: yes
   become_user: emma
+

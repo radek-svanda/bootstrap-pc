@@ -36,13 +36,14 @@
     - group_vars/debian_at_home.yml
     - secrets.yml
   roles:
-          #- role: essentials
-      #- role: keepass
-      #keepass_sync: no
-      #- role: jetbrains-mono
-      #- role: sublime
-      #- role: tilix
+    - role: essentials
+    - role: keepass
+      keepass_sync: no
+    - role: jetbrains-mono
+    - role: sublime
+    - role: tilix
     - role: emma-desktop
+    - role: l502x
 
 - hosts: pop_at_work
   vars_files:
