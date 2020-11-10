@@ -52,12 +52,12 @@
       value: "'app-icon-only'"
 
     - key: /org/gnome/shell/favorite-apps
-      value: "['firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'decko.desktop', 'meet.desktop', 'outlook.desktop']"
+      value: "['firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'decko.desktop', 'meet.desktop', 'outlook.desktop', 'messenger.desktop', 'skypeforlinux.desktop']"
 
   become: yes
   become_user: emma
 
-- file: 
+- file:
     path: "{{ item }}"
     state: directory
   with_items:

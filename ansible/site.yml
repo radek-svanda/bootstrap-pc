@@ -40,10 +40,11 @@
     - role: keepass
       keepass_sync: no
     - role: jetbrains-mono
-    - role: sublime
+      #- role: sublime
     - role: tilix
     - role: emma-desktop
     - role: l502x
+    - role: advcpmv
 
 - hosts: pop_at_work
   vars_files:

@@ -19,6 +19,7 @@ packages:
   - name: python3-pip
   - name: python-pip
   - name: powertop
+  - name: gimp
 
   - name: gnome-shell-extension-desktop-icons
     state: absent
@@ -244,6 +245,12 @@ packages:
 debs:
   - name: google-chrome-stable
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    upgrade: no
+  - name: skypeforlinux
+    url: https://repo.skype.com/latest/skypeforlinux-64.deb
+    upgrade: no
+  - name: veracrypt
+    url: https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-1.24-Update7-Debian-10-amd64.deb
     upgrade: no
 
 pips:
