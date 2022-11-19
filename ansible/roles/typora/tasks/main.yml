@@ -1,0 +1,30 @@
+
+- name: Download typora
+  get_url:
+    url: "{{ typora_url }}"
+    dest: "{{ typora_local_package }}"
+
+- name: Prepare directories
+  file: 
+    path: "{{ typora_local_base }}"
+    state: directory
+  become: yes
+
+- name: Extract the package
+  unarchive:
+    src: "{{ typora_local_package }}"
+    dest: "{{ typora_local_base }}"
+  become: yes
+
+- name: Link binary
+  file:
+    src: "{{ typora_local_base }}/bin/Typora-linux-x64/Typora"
+    dest: /usr/local/bin/Typora
+    state: link
+  become: yes
+
+- name: Create launcher
+  template:
+    src: typora.desktop.j2
+    dest: /usr/local/share/applications/typora.desktop
+  become: yes

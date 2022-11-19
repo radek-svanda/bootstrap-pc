@@ -1,0 +1,51 @@
+
+- get_url:
+    url: https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
+    dest: '{{ download_dir }}/session-manager-plugin.rpm'
+
+- file:
+    path: '{{ download_dir }}/session-manager-plugin'
+    state: directory
+
+- shell: 'rpm2cpio "{{ download_dir }}/session-manager-plugin.rpm" | cpio -id -D "{{ download_dir }}/session-manager-plugin"'
+  args:
+    creates: '{{ download_dir }}/session-manager-plugin/usr/local/sessionmanagerplugin/VERSION'
+
+- copy:
+    src: '{{ download_dir }}/session-manager-plugin/usr/local/sessionmanagerplugin'
+    dest: /usr/local/
+  become: yes
+
+- file:
+    path: /usr/local/sessionmanagerplugin/bin/session-manager-plugin
+    mode: a+x
+  become: yes
+
+- file:
+    src: /usr/local/sessionmanagerplugin/bin/session-manager-plugin
+    dest: /usr/local/bin/session-manager-plugin
+    state: hard
+  become: yes
+
+- file:
+    path: /var/lib/amazon
+    state: directory
+    mode: 0755
+  become: yes
+
+- file:
+    path: /var/lib/amazon/sessionmanagerplugin
+    state: directory
+    mode: 1777
+  become: yes
+
+- copy:
+    src: '{{ download_dir }}/session-manager-plugin/etc/systemd/system/session-manager-plugin.service'
+    dest: /etc/systemd/system/session-manager-plugin.service
+  become: yes
+
+- ansible.builtin.systemd:
+    name: session-manager-plugin
+    state: started
+    enabled: yes
+  become: yes

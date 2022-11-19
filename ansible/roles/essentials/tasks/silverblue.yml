@@ -1,0 +1,15 @@
+
+# - include_tasks: flatpak.yml
+# - include_tasks: snaps_grab.yml
+- include_tasks: appimage.yml
+
+# - copy:
+#     content: "fs.inotify.max_user_watches = 524288"
+#     dest: /etc/sysctl.conf
+#   register: inotify_update
+#   become: yes
+
+# - name: reload configuration
+#   command: sysctl -p --system
+#   become: yes
+#   when: inotify_update.changed

@@ -1,0 +1,46 @@
+ansible_connection: local
+edition: silverblue
+
+user_home_dir: "{{ ansible_env.HOME }}"
+user_config_dir: "{{ user_home_dir }}/.config"
+user_local_dir: "{{ user_home_dir }}/.local"
+download_dir: "{{ user_home_dir }}/.ansible/tmp/downloads"
+temp_dir: "{{ user_home_dir }}/.ansible/tmp"
+desktop_app_dir: "{{ user_local_dir }}/share/applications"
+desktop_icons_dir: "{{ user_local_dir }}/share/icons"
+user_bin_dir: "{{ user_home_dir }}/bin"
+apps_dir: /usr/local/share
+
+github_dir: "{{ user_home_dir }}/Github"
+local_fonts: "{{ user_local_dir }}/share/fonts"
+
+# repos:
+#   # sudo rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+#   - url: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+#   - url: https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+sdks:
+  - name: "java"
+    versions:
+      - 'adoptopenjdk-11.0.9+11'
+      # - 'adopt-openjdk-8u252-b09'
+    global: 'adoptopenjdk-11.0.9+11'
+  - name: "nodejs"
+    versions:
+      - '14.15.0'
+  #   global: '12.16.3'
+  # - name: "maven"
+  #   versions:
+  #     - '3.6.3'
+  #   global: '3.6.3'
+  - name: "github-cli"
+    versions:
+      - '1.2.1'
+    # global: '1.2.1'
+  - name: 'yarn'
+    versions:
+      - '1.22.10'
+  #   global: '1.22.4'
+
+# $ sudo chattr -i / && sudo ln -s /var/lib/snapd/snap /snap
+# chattr -i / && mkdir -p /snap && mount --bind /var/lib/snap /snap or whatever.

@@ -1,0 +1,7 @@
+
+- name: install dnf packages
+  dnf:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ packages }}"
+  become: yes

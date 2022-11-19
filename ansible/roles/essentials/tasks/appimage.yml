@@ -10,8 +10,6 @@
   with_items: "{{ appimg_files.results }}"
   when: not item.stat.exists
 
-# - debug: var=appimg_files
-
 - file: path="{{ appimage_dir }}" state=directory
 
 - name: install app

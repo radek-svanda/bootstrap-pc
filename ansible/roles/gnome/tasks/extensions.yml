@@ -1,28 +1,44 @@
 
-- name: install dependencies
-  apt:
-    name:
-      - gettext
-  become: yes
-
 - name: check installed
   stat:
-    path: "{{ gnome_extensions_dir }}/{{ item.id }}"
-  with_items: "{{ extensions_from_git }}"
-  register: from_git
+    path: "{{ gnome_extensions_dir }}/{{ item.id }}/metadata.json"
+  with_items: "{{ gnome_shell_extensions }}"
+  register: installed_extensions
 
-- debug: var=from_git
+- debug: var=installed_extensions
+
+- name: download extensions
+  get_url:
+    url: "{{ item.item.url }}"
+    dest: "{{ download_dir }}/{{ item.item.url | basename }}"
+  with_items: "{{ installed_extensions.results }}"
+  when: not item.stat.exists and item.item.url is defined and item.item.url is match("^.*\.zip$")
+
+- name: create extension dirs
+  file:
+    path: "{{ gnome_extensions_dir }}/{{ item.item.id }}"
+    state: directory
+  with_items: "{{ installed_extensions.results }}"
+  when: not item.stat.exists and item.item.url is defined and item.item.url is match("^.*\.zip$")
+
+- name: extract extensions
+  unarchive:
+    src: "{{ download_dir }}/{{ item.item.url | basename }}"
+    dest: "{{ gnome_extensions_dir }}/{{ item.item.id }}"
+  with_items: "{{ installed_extensions.results }}"
+  when: not item.stat.exists and item.item.url is defined and item.item.url is match("^.*\.zip$")
 
 - name: clone extensions
   git:
     repo: "{{ item.item.url }}"
-    dest: "{{ gnome_extensions_dir }}/{{ item.item.id }}"
-  with_items: "{{ from_git.results }}"
-  when: not item.stat.exists
+    dest: "{{ gnome_extensions_dir }}/{{ item.item.dest | default(item.item.id) }}"
+    version: "{{ item.item.version | default('HEAD') }}"
+  with_items: "{{ installed_extensions.results }}"
+  when: not item.stat.exists and item.item.url is defined and item.item.url is match("^.*\.git$")
 
 - name: build extensions
   shell: "{{ item.item.build }}"
   args:
-    chdir: "{{ gnome_extensions_dir }}/{{ item.item.id }}"
-  with_items: "{{ from_git.results }}"
+    chdir: "{{ gnome_extensions_dir }}/{{ item.item.dest | default(item.item.id) }}"
+  with_items: "{{ installed_extensions.results }}"
   when: not item.stat.exists and item.item.build is defined

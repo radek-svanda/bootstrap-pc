@@ -1,0 +1,13 @@
+- name: Install snapd
+  include_role:
+    name: ostree-packages
+  vars:
+    packages:
+      - name: snapd
+
+- name: Update snap packages
+  community.general.snap:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  become: yes
+  with_items: "{{ snaps }}"

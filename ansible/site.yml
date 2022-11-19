@@ -1,12 +1,213 @@
 ---
 
+- hosts: silverblue_at_work
+  vars_files:
+    - group_vars/silverblue_at_work.yml
+    - secrets.yml
+  vars:
+    fedora_version: 35
+  roles:
+    - role: gaming-nvidia-xrun
+    - role: mutt-mail
+    - role: yum-repos
+      rpm_repos:
+        - name: google-chrome
+          url: http://dl.google.com/linux/chrome/rpm/stable/x86_64
+          key: https://dl.google.com/linux/linux_signing_key.pub
+    - role: rpm-fusion
+      # must be added before packages
+      fedora_version: 35
+    - role: ostree-packages
+      packages:
+        # prefered terminal emulator
+        - name: tilix
+        # clipboard manager
+        - name: gnome-shell-extension-gpaste
+        - name: gnome-tweaks
+        # touchpad gestures
+        - name: touchegg
+        # multimedia in firefox
+        - name: ffmpeg
+        # gnome applets
+        - name: gnome-shell-extension-system-monitor-applet
+        # gnome theme
+        - name: yaru-theme
+        # system tools
+        - name: htop
+        - name: powertop
+        - name: vim
+        - name: git
+        - name: graphviz
+        # - needed for gnome-plugins working with windows
+        - name: xprop
+        # calendar sync in gnome
+        - name: evolution-ews
+        # essentials
+        - name: google-chrome-stable
+        # python scripting in nautilus
+        - name: nautilus-python
+    - role: flatpak-remote
+      flatpak_remotes:
+        - name: flathub
+          url: https://flathub.org/repo/flathub.flatpakrepo
+        - name: elementary
+          url: https://flatpak.elementary.io/repo
+    - role: flatpak
+      packages:
+        - name: ca.desrt.dconf-editor
+        - name: ch.protonmail.protonmail-bridge
+        - name: com.calibre_ebook.calibre
+        - name: com.dropbox.Client
+        - name: com.gigitux.youp
+        - name: com.github.Murmele.Gittyup
+        - name: com.github.PintaProject.Pinta
+        - name: com.github.calo001.fondo
+          origin: elementary
+        - name: com.github.candiedoperation.ordne
+          origin: elementary
+        - name: com.github.dbhowell.peeq
+          origin: elementary
+        - name: com.github.donadigo.appeditor
+          origin: elementary
+        - name: com.github.joseexposito.touche
+        - name: com.github.louis77.tuner
+          origin: elementary
+        - name: com.interversehq.qView
+        - name: com.microsoft.Teams
+        - name: com.slack.Slack
+        - name: com.spotify.Client
+        - name: com.uploadedlobster.peek
+        - name: com.usebottles.bottles
+        - name: com.wps.Office
+        - name: de.haeckerfelix.Fragments
+        - name: de.haeckerfelix.Shortwave
+        - name: fr.handbrake.ghb
+        - name: io.typora.Typora
+        - name: net.cozic.joplin_desktop
+        - name: org.cznic.Datovka
+        - name: org.darktable.Darktable
+          origin: fedora
+        - name: org.davmail.DavMail
+        - name: org.gimp.GIMP
+          origin: fedora
+        - name: org.gnome.Calculator
+          origin: fedora
+        - name: org.gnome.Calendar
+          origin: fedora
+        - name: org.gnome.Characters
+          origin: fedora
+        - name: org.gnome.Cheese
+          origin: fedora
+        - name: org.gnome.Contacts
+          origin: fedora
+        - name: org.gnome.Dictionary
+        - name: org.gnome.Evince
+          origin: fedora
+        - name: org.gnome.Extensions
+          origin: fedora
+        - name: org.gnome.FileRoller
+          origin: fedora
+        - name: org.gnome.Logs
+          origin: fedora
+        - name: org.gnome.Maps
+          origin: fedora
+        - name: org.gnome.Meld
+          origin: fedora
+        - name: org.gnome.NautilusPreviewer
+          origin: fedora
+        - name: org.gnome.Screenshot
+          origin: fedora
+        - name: org.gnome.Solanum
+          state: absent
+        - name: org.gnome.Todo
+        - name: org.gnome.Weather
+          origin: fedora
+        - name: org.gnome.baobab
+          origin: fedora
+        - name: org.gnome.clocks
+          origin: fedora
+        - name: org.gnome.eog
+          origin: fedora
+        - name: org.gnome.font-viewer
+          origin: fedora
+        - name: org.gnome.gedit
+          origin: fedora
+        - name: org.gtk.Gtk3theme.Yaru
+        - name: org.gtk.Gtk3theme.Yaru-dark
+        - name: org.gtk.Gtk3theme.Yaru-light
+        - name: org.inkscape.Inkscape
+          origin: fedora
+        - name: org.kde.digikam
+        - name: org.kde.krita
+        - name: org.keepassxc.KeePassXC
+        - name: org.ksnip.ksnip
+        - name: org.libreoffice.LibreOffice
+          origin: fedora
+        - name: org.raspberrypi.rpi-imager
+        - name: org.videolan.VLC
+        - name: org.zealdocs.Zeal
+        - name: us.zoom.Zoom
+        - name: com.github.tchx84.Flatseal
+    - role: snap
+      snaps:
+        - name: acrordrdc
+        - name: btop
+        - name: ddgr
+        - name: psst-gui
+        - name: redis-desktop-manager
+    - role: sublime
+    - role: code
+    - role: asdf
+    # - role: intellij
+    # - role: veracrypt
+    # - role: git
+    # - role: aws
+    # - role: xps
+    # - role: gnome
+    #   nautilus_bookmarks:
+    #     - "{{ user_home_dir }}/Workspace"
+        # - "{{ user_home_dir }}/OneDrive"
+        # - "{{ user_home_dir }}/Dropbox"
+    # - role: advcpmv
+    # - role: typora
+    # - role: bluetooth
+    # - role: linuxbrew
+    # - role: insomnia
+  tasks:
+    - name: Set a hostname
+      hostname:
+        name: dell-sb
+
+- hosts: fedora_toolbox
+  connection: podman
+  vars:
+    - edition: fedora
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/fedora_toolbox.yml
+    - secrets.yml
+  roles:
+    - role: dnf
+      packages:
+        - name: fzf
+        - name: glibc-langpack-en
+        - name: graphviz
+        - name: netcat
+        - name: onedrive
+        - name: restic
+        - name: speedtest-cli
+        - name: the_silver_searcher
+        - name: cargo
+        - name: python3-pip
+    # - role: asdf
+
 - hosts: ubuntu_at_work
   vars_files:
     - group_vars/ubuntu.yml
     - group_vars/ubuntu_at_work.yml
     - secrets.yml
   roles:
-    - role: essentials
+    # - role: essentials
     # - role: onedrive
     # - role: gnome
     #   nautilus_bookmarks:
@@ -29,6 +230,7 @@
     # - role: fma
     # - role: aws
     # - role: advcpmv
+    - role: typora
 
 - hosts: debian_at_home
   vars_files:
@@ -41,9 +243,9 @@
       keepass_sync: no
     - role: jetbrains-mono
     - role: sublime
-    - role: tilix
-    - role: emma-desktop
-    - role: l502x
+#    - role: tilix
+#    - role: emma-desktop
+#    - role: l502x
 
 - hosts: pop_at_work
   vars_files:
@@ -81,4 +283,4 @@
     # - role: brave
     # - role: git
     # - role: desktop
-    - role: mutt
+    - role: mutt-mail

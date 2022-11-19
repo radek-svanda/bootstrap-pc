@@ -1,0 +1,37 @@
+
+- name: Add nvidia-xrun repository
+  get_url:
+    url: "https://copr.fedorainfracloud.org/coprs/ekultails/nvidia-xrun/repo/fedora-{{ fedora_version }}/ekultails-nvidia-xrun-fedora-{{ fedora_version }}.repo"
+    dest: "/etc/yum.repos.d/ekultails-nvidia-xrun.repo"
+  become: yes
+
+    # FIXME: add akmod user and group to /etc/passwd and /etc/group. Only present in /usr/lib
+
+- name: Install nvidia drivers/modules
+  import_role: name=ostree-packages
+  vars:
+    packages:
+      # nvidia drivers/modules
+      - name: akmod-nvidia
+      # xrun script
+      - name: nvidia-xrun
+      # configure brightness and other screen stuff
+      - name: xrandr
+      # slim window manager
+      - name: openbox
+  become: yes
+
+# - name: Install gaming dependencies
+#   import_role: name=ostree-packages
+#   vars:
+#     packages:
+
+# needs nvidia drivers as well
+- name: Install steam packages
+  import_role: name=flatpak
+  vars:
+    packages:
+      - name: com.valvesoftware.Steam
+      - name: com.valvesoftware.Steam.CompatibilityTool.Proton
+      - name: com.valvesoftware.Steam.CompatibilityTool.Proton-Exp
+      - name: com.valvesoftware.Steam.CompatibilityTool.Proton-GE

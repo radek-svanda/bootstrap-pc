@@ -1,0 +1,9 @@
+
+# - name: add rpm fusion
+#   dnf:
+#     name:
+#       - "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-35.noarch.rpm"
+#       - "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-35.noarch.rpm"
+#     state: present
+
+- include_tasks: dnf.yml

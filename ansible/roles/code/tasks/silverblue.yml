@@ -1,0 +1,13 @@
+- include_role:
+    name: yum-repos
+  vars:
+    rpm_repos:
+      - name: vscode
+        url: https://packages.microsoft.com/yumrepos/vscode
+        key: https://packages.microsoft.com/keys/microsoft.asc
+
+- include_role:
+    name: ostree-packages
+  vars:
+    packages:
+      - name: code

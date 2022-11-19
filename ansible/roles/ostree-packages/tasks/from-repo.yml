@@ -1,0 +1,16 @@
+- name: Install ostree packages
+  community.general.rpm_ostree_pkg:
+    name: "{{ ostree_install | map(attribute='name') | list }}"
+    state: present
+  register: install_packages
+  become: yes
+
+- name: Uninstall ostree packages
+  community.general.rpm_ostree_pkg:
+    name: "{{ ostree_uninstall | map(attribute='name') | list }}"
+    state: absent
+  register: uninstall_packages
+  when: ostree_uninstall | length > 0
+
+- debug: msg="Reboot with 'systemctl reboot' to apply changes"
+  when: install_packages.changed

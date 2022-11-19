@@ -10,3 +10,11 @@
     append: yes
     groups: docker
   become: yes
+
+Silverblue:
+  - install moby-engine
+  - see configuration 
+  - change firewall backend - https://www.reddit.com/r/Fedora/comments/fx5z9e/communication_between_docker_containers_blocked/fmt2iky/
+  You may need to adjust firewallds backend from nftables to iptables.
+
+See FirewallBackend in /etc/firewalld/firewalld.conf

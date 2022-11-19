@@ -17,6 +17,10 @@
   become: yes
   when: inotify_update.changed
 
+- name: install flatpak
+  apt: name=flatpak state=present
+  become: yes
+
 - include_tasks: apt.yml
 - include_tasks: debs.yml
 # - include_tasks: flatpak.yml

@@ -1,0 +1,36 @@
+
+- name: Import a key from a url
+  rpm_key:
+    state: present
+    key: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+  become: yes
+
+- name: Add repository
+  yum_repository:
+    name: sublime
+    description: sublime hq repository
+    baseurl: https://download.sublimetext.com/rpm/stable/x86_64
+  become: yes
+
+- name: Install packages
+  dnf:
+    name:
+      - sublime-merge
+
+# - name: create preferences directories
+#   file:
+#     path: "{{ item }}"
+#     state: directory
+#   with_items:
+#     - "{{ sublime_text_config_dir }}"
+#     - "{{ sublime_merge_config_dir }}"
+
+# - name: configure sync settings
+#   include_tasks: sync-settings.yml
+#   when: sublime_text_sync_settings|default(false)|bool == true
+
+# - name: sublime merge settings
+#   copy:
+#     src: merge_Preferences.sublime-settings
+#     dest: "{{ sublime_merge_config_dir }}/Preferences.sublime-settings"
+#     force: no

@@ -1,3 +1,5 @@
-- name: install snapd
-  apt: name=snapd state=present
-  become: yes
+- include_tasks: "{{ pkg }}"
+  with_first_found:
+    - "{{ edition }}.yml"
+  loop_control:
+    loop_var: pkg

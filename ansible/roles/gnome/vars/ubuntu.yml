@@ -10,3 +10,20 @@ appindicators_name: appindicatorsupport@rgcjonas.gmail.com
 appindicators_url: https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v33.zip
 appindicators_file: "{{ download_dir }}/{{ appindicators_name }}"
 
+extensions_from_git:
+  - id: alt-tab-raise-first-window@system76.com
+    url: https://github.com/pop-os/gnome-shell-extension-alt-tab-raise-first-window.git
+  - id: always-show-workspaces@system76.com
+    url: https://github.com/pop-os/gnome-shell-extension-always-show-workspaces.git
+  - id: windowoverlay-icons@sustmidown.centrum.cz
+    url: https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons.git
+    build: 'make'
+  - id: sound-output-device-chooser@kgshank.net
+    url: https://github.com/kgshank/gse-sound-output-device-chooser.git
+    build: 'mv sound-output-device-chooser@kgshank.net/* .'
+  - id: Resource_Monitor@Ory0n
+    url: https://github.com/Ory0n/Resource_Monitor.git
+
+extensions_download:
+  - id: gtktitlebar@velitasali.github.io
+    url: https://github.com/velitasali/GTKTitleBar/releases/download/5.0/gtktitlebar-5.0.zip

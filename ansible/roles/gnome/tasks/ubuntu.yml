@@ -21,6 +21,8 @@
       - gnome-shell-extensions-gpaste
       - gnome-shell-extension-hide-activities
       - gnome-sushi
+      # extensions dependency
+      - gettext
 
 - include: 'extensions.yml'
 

@@ -1,4 +1,3 @@
-coreutils_version: "8.30"
 coreutils_url: "https://ftp.gnu.org/gnu/coreutils/coreutils-{{ coreutils_version }}.tar.xz"
 coreutils_local: "{{ download_dir }}/{{ coreutils_url | basename }}"
 coreutils_dest: "{{ temp_dir }}"

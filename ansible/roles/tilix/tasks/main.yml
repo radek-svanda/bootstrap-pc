@@ -1,11 +1,11 @@
 
-- apt: name=tilix
-  become: yes
+# - apt: name=tilix
+#   become: yes
 
-- alternatives:
-    name: x-terminal-emulator
-    path: /usr/bin/tilix.wrapper
-  become: yes
+# - alternatives:
+#     name: x-terminal-emulator
+#     path: /usr/bin/tilix.wrapper
+#   become: yes
 
 - name: tilix configuration
   dconf: key='{{ item.key }}' value='{{ item.value | string }}'

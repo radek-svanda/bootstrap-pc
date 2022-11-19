@@ -1,8 +1,4 @@
 
-- name: install powertop
-  become: yes
-  apt: name=powertop state=present
-
 - name: create powertop autotune service
   become: yes
   copy:

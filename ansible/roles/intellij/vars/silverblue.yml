@@ -1,0 +1,4 @@
+
+intellij_install_dir: /usr/local/share/idea
+intellij_group: wheel
+intellij_dependencies: []

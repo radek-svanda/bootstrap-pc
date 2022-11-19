@@ -20,9 +20,16 @@ fi
 
 shift
 
-if [[ ! -f /usr/bin/ansible ]]; then
-  sudo apt-get install -y ansible
-fi
+. /etc/os-release
+
+#if [[ ! -f /usr/bin/ansible ]]; then
+#  #sudo apt-get install -y ansible
+#  if [[ $NAME == "Fedora" ]]; then
+#    if [[ $VARIANT_ID == "silverblue" ]]; then
+#      rpm-ostree install ansible && systemctl reboot
+#    fi
+#  fi
+#fi
 
 mkdir -p ~/.ansible
 

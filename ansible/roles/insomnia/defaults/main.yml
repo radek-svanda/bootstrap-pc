@@ -1,0 +1,6 @@
+
+insomnia_version: 2021.2.2
+insomnia_url: "https://github.com/Kong/insomnia/releases/download/core%40{{ insomnia_version }}/Insomnia.Core-{{ insomnia_version }}.tar.gz"
+insomnia_file: "{{ insomnia_url | basename }}"
+insomnia_local: "{{ download_dir }}/{{ insomnia_file }}"
+insomnia_location: "/opt/Insomnia.Core-{{ version }}"

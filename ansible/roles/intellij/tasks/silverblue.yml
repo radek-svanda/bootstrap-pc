@@ -1,0 +1,5 @@
+
+- file: path=/usr/local/share/applications state=directory
+  become: yes
+  
+- include_tasks: 'linux.yml'

@@ -1,0 +1,12 @@
+https://github.com/Witko/nvidia-xrun
+
+kargs:
+  rd.luks.uuid=luks-5059c295-1383-45ef-a76d-200fca1df042 rhgb quiet root=UUID=dfa9bfb1-a0a1-4d90-9e88-0bc81f718793 rootflags=subvol=root systemd.unified_cgroup_hierarchy=0 rd.driver.blacklist=nouveau,nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm modprobe.blacklist=nouveau,nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm nouveau.modeset=0
+https://copr.fedorainfracloud.org/coprs/ekultails/nvidia-xrun/
+
+$ cat /etc/modprobe.d/nouveau-blacklist.conf 
+blacklist nouveau
+options nouveau modeset=0
+
+
+openbox

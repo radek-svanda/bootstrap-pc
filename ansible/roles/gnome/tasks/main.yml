@@ -1,2 +1,5 @@
+
+- include_vars: "{{ edition }}.yml"
+
 - name: setup desktop on {{ edition }}
   include_tasks: '{{ edition }}.yml'

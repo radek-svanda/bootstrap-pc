@@ -1,0 +1,5 @@
+https://askubuntu.com/a/1120106
+
+https://github.com/EHfive/pulseaudio-modules-bt/wiki/Packages#fedora
+better sound in fedora rpm-ostree
+$ rpm-ostree override remove pulseaudio-module-bluetooth --install pulseaudio-module-bluetooth-freeworld

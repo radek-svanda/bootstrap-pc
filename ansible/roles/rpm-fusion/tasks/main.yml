@@ -1,0 +1,16 @@
+
+- name: Add rpm fusion
+  shell: "rpm-ostree install --idempotent --unchanged-exit-77 https://mirrors.rpmfusion.org/{{ item }}/fedora/rpmfusion-{{ item }}-release-{{ fedora_version }}.noarch.rpm"
+  ignore_errors: yes
+  register: add_fusion
+  changed_when: add_fusion.rc == 0
+  failed_when: add_fusion.rc != 0 and add_fusion.rc != 77
+  with_items:
+    - free
+    - nonfree
+
+- debug: msg="Reboot with 'systemctl reboot' to apply changes now"
+  when: add_fusion.changed
+
+- meta: end_play
+  when: add_fusion.changed

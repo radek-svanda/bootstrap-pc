@@ -5,3 +5,7 @@ snaps: []
 brews: []
 taps: []
 pips: []
+
+skip_ostree: false
+
+appimage_dir: "{{ user_home_dir }}/Apps"

@@ -1,0 +1,69 @@
+
+- name: gnome setup
+  dconf: key='{{ item.key }}' value='{{ item.value | string }}'
+  with_items:
+    # system
+    - key: /org/gnome/desktop/interface/show-battery-percentage
+      value: "true"
+    - key: /org/gnome/desktop/input-sources/sources
+      value: "[('xkb', 'us'), ('xkb', 'cz')]"
+    # single click open in nautilus
+    - key: /org/gnome/nautilus/preferences/click-policy
+      value: "'single'"
+    # media shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/play
+      value: "['<Alt><Super>Down']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/volume-up
+      value: "['<Primary><Alt><Super>Up']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/volume-down
+      value: "['<Primary><Alt><Super>Down']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/next
+      value: "['<Alt><Super>Right']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/previous
+      value: "['<Alt><Super>Left']"
+    # nautilus shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/home
+      value: "['<Super>e']"
+    # modals not attached, can be moved
+    - key: /org/gnome/mutter/attach-modal-dialogs
+      value: "false"
+    # nautilus icon size
+    - key: /org/gnome/nautilus/icon-view/default-zoom-level
+      value: "'standard'"
+    # tap to click
+    - key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
+      value: "true"
+    # default gpaste shortcuts clash with intellij
+    - key: /org/gnome/GPaste/sync-clipboard-to-primary
+      value: "''"
+    - key: /org/gnome/GPaste/make-password
+      value: "''"
+    - key: /org/gnome/GPaste/upload
+      value: "''"
+    - key: /org/gnome/GPaste/sync-primary-to-clipboard
+      value: "''"
+    - key: /org/gnome/GPaste/pop
+      value: "''"
+
+- name: create nautilus bookmarks
+  lineinfile:
+    path: "{{ user_config_dir }}/gtk-3.0/bookmarks"
+    line: "file://{{ item }}"
+  with_items: "{{ nautilus_bookmarks }}"
+
+- include: 'extensions.yml'
+
+# https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
+# gsettings get org.gnome.mutter experimental-features
+# gsettings set org.gnome.mutter experimental-features "['screen-cast', 'remote-desktop']"
+
+# alt tab on current workspace only:
+# gsettings set org.gnome.shell.app-switcher current-workspace-only true
+# original value
+# gsettings set org.gnome.shell.app-switcher current-workspace-only false
+
+# $ gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"
+# $ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+# $ gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Alt><Shift>Tab']"
+# $ gsettings set org.gnome.Terminal.Legacy.Settings headerbar '@mb nothing'
+# $ gsettings set org.gnome.Terminal.Legacy.Settings headerbar false

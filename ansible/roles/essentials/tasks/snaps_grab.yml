@@ -1,0 +1,61 @@
+
+- name: search packages
+  uri:
+    url: "https://api.snapcraft.io/v2/snaps/info/{{ item.name }}"
+    headers:
+      Snap-Device-Series: 16
+  register: snap_items
+  with_items: "{{ snaps }}"
+
+- name: download packages
+  get_url:
+    url: "{{ item.json['channel-map'][0].download.url }}"
+    dest: "{{ download_dir }}/{{ item.json['channel-map'][0].download.url | basename }}"
+  with_items: "{{ snap_items.results }}"
+  register: downloaded_snaps
+
+- shell: "unsquashfs -d /opt/{{ item.item.item.name }} {{ item.dest }}"
+  args:
+    creates: "/opt/{{ item.item.item.name }}"
+  with_items: "{{ downloaded_snaps.results }}"
+  register: extracted_snaps
+  become: yes
+
+- file: path="{{ item }}" state=directory
+  become: yes
+  with_items:
+    - /usr/local/share/applications
+    - /usr/local/share/icons
+
+- copy:
+    src: "{{ item.invocation.module_args.creates }}/meta/gui/icon.png"
+    dest: "/usr/local/share/icons/{{ item.item.item.item.name }}.png"
+  become: yes
+  with_items: "{{ extracted_snaps.results }}"
+
+- copy:
+    src: "{{ item.invocation.module_args.creates }}/meta/gui/{{ item.item.item.item.name }}.desktop"
+    dest: "/usr/local/share/applications/{{ item.item.item.item.name }}.desktop"
+  become: yes
+  with_items: "{{ extracted_snaps.results }}"
+
+- lineinfile:
+    path: "/usr/local/share/applications/{{ item.item.item.item.name }}.desktop"
+    regexp: ^Icon=
+    line: "Icon={{ item.item.item.item.name }}.png"
+  with_items: "{{ extracted_snaps.results }}"
+  become: yes
+
+- lineinfile:
+    path: "/usr/local/share/applications/{{ item.item.item.item.name }}.desktop"
+    regexp: ^Icon=
+    line: "Icon={{ item.item.item.item.name }}.png"
+  with_items: "{{ extracted_snaps.results }}"
+  become: yes
+
+- lineinfile:
+    path: "/usr/local/share/applications/{{ item.item.item.item.name }}.desktop"
+    regexp: ^Exec=
+    line: "Exec={{ item.invocation.module_args.creates }}/{{ item.item.item.item.name }}"
+  with_items: "{{ extracted_snaps.results }}"
+  become: yes

@@ -1,0 +1,4 @@
+ostree_install: "{{ packages | selectattr('state', 'undefined') | selectattr('url', 'undefined') | list }}"
+ostree_uninstall: "{{ packages | json_query(\"[?state=='absent']\") | list }}"
+
+url_ostree_install: "{{ packages | json_query(\"[?url]\") | list }}"

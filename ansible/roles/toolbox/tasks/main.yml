@@ -1,0 +1,3 @@
+
+- shell: "toolbox create {{ item }}"
+  with_items: "{{ toolboxes }}"

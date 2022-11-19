@@ -1,0 +1,7 @@
+
+- name: add flatpak remotes
+  flatpak_remote:
+    flatpakrepo_url: "{{ item.url }}"
+    name: "{{ item.name }}"
+  with_items: "{{ flatpak_remotes }}"
+  become: yes

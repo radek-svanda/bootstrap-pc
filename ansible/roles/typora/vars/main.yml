@@ -1,0 +1,4 @@
+typora_url: https://typora.io/linux/Typora-linux-x64.tar.gz
+typora_local_package: "{{ download_dir }}/{{ typora_url | basename }}"
+typora_local_base: /opt/typora
+typora_icon: "{{ typora_local_base }}/bin/Typora-linux-x64/resources/app/setting-dist/icon.png"

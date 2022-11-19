@@ -1,0 +1,17 @@
+
+- file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ user_home_dir }}/.linuxbrew/bin"
+
+- name: install homebrew
+  git:
+    repo: https://github.com/Homebrew/brew.git
+    dest: "{{ user_home_dir }}/.linuxbrew/Homebrew"
+    version: 3.0.2
+
+- file:
+    src: "{{ user_home_dir }}/.linuxbrew/Homebrew/bin/brew"
+    dest: "{{ user_home_dir }}/.linuxbrew/bin/brew"
+    state: link

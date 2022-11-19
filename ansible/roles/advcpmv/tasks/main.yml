@@ -1,3 +1,6 @@
+
+- include_vars: '{{ edition }}.yml'
+
 - get_url:
     url: "{{ coreutils_url }}"
     dest: "{{ coreutils_local }}"

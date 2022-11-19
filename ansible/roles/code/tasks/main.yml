@@ -1,33 +1,42 @@
 
-- import_tasks: ../../essentials/tasks/debs.yml
-  vars:
-    debs: "{{ vscode_debs }}"
+- include_vars: "{{ pkg }}"
+  with_first_found:
+    - "{{ edition }}.yml"
+  loop_control:
+    loop_var: pkg
 
-- file: path="{{ item }}" state=directory
-  with_items:
-    - "{{ vscode_conf }}"
-    - "{{ vscode_extensions }}"
+- include_tasks: "{{ pkg }}"
+  with_first_found:
+    - "{{ edition }}.yml"
+  loop_control:
+    loop_var: pkg
 
-- find:
-    paths: "{{ vscode_extensions }}"
-    patterns: "{{ item }}-*"
-    file_type: directory
-  with_items:
-    - shan.code-settings-sync
-  register: vscode_extensions_installed
-
-- name: install extensions
-  shell: "/usr/bin/code --install-extension {{ item.item }}"
-  when: item.matched == 0
-  with_items: "{{ vscode_extensions_installed.results }}"
-
-- name: copy settings
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ vscode_conf }}/{{ item.dest }}"
-    force: no
-  with_items:
-    - src: settings.json.j2
-      dest: settings.json
-    - src: syncLocalSettings.json.j2
-      dest: syncLocalSettings.json
+#- file: path="{{ item }}" state=directory
+#  with_items:
+#    - "{{ vscode_conf }}"
+#    - "{{ vscode_extensions }}"
+#
+#- find:
+#    paths: "{{ vscode_extensions }}"
+#    patterns: "{{ item }}-*"
+#    file_type: directory
+#  with_items:
+#    - shan.code-settings-sync
+#  register: vscode_extensions_installed
+#
+#- name: install extensions
+#  shell: "{{ vscode_launcher }} --install-extension {{ item.item }}"
+#  when: item.matched == 0
+#  with_items: "{{ vscode_extensions_installed.results }}"
+#
+#- name: copy settings
+#  template:
+#    src: "{{ item.src }}"
+#    dest: "{{ vscode_conf }}/{{ item.dest }}"
+#    force: no
+#  with_items:
+#    - src: settings.json.j2
+#      dest: settings.json
+#    - src: syncLocalSettings.json.j2
+#      dest: syncLocalSettings.json
+#

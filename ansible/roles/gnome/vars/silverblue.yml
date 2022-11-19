@@ -1,0 +1,23 @@
+
+gnome_shell_extensions:
+  - id: gtktitlebar@velitasali.github.io
+    url: https://github.com/velitasali/GTKTitleBar/releases/download/5.0/gtktitlebar-5.0.zip
+    build: "mv gtktitlebar@velitasali.github.io/* ./"
+  - id: alt-tab-raise-first-window@system76.com
+    url: https://github.com/pop-os/gnome-shell-extension-alt-tab-raise-first-window.git
+  - id: always-show-workspaces@system76.com
+    url: https://github.com/pop-os/gnome-shell-extension-always-show-workspaces.git
+  # - id: pixel-saver@deadalnix.me
+  #   url: https://github.com/deadalnix/pixel-saver.git
+  #   build: "mv pixel-saver@deadalnix.me/* ./"
+  # - id: no-title-bar@jonaspoehler.de
+  #   url: https://github.com/poehlerj/no-title-bar.git
+  #   dest: no-title-bar
+  #   build: "make install"
+  - id: sound-output-device-chooser@kgshank.net
+    url: https://github.com/kgshank/gse-sound-output-device-chooser.git
+    build: 'mv sound-output-device-chooser@kgshank.net/* .'
+  # - id: Resource_Monitor@Ory0n
+  #   url: https://github.com/Ory0n/Resource_Monitor.git
+
+# https://extensions.gnome.org/extension/1482/remove-audio-device-selection-dialog/

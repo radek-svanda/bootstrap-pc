@@ -1,4 +1,6 @@
 ---
 
+- include_vars: "{{ edition }}.yml"
+
 - name: install intellij on {{ edition }}
   include_tasks: '{{ edition }}.yml'

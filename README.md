@@ -6,6 +6,7 @@ Repository contains optionated PC configuration.
 
 * [Ubuntu](doc/Ubuntu)
 * Windows (TBA)
+* Fedora
 
 ## TODO
 

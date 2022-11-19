@@ -1,0 +1,87 @@
+- import_role:
+    name: gantsign.intellij
+  vars:
+    intellij_edition: ultimate
+    users:
+      - username: "{{ user_name }}"
+        intellij_disabled_plugins:
+          - AngularJS
+          - AntSupport
+          - CFML Support
+          - CloudFoundry
+          - DevKit
+          - GlassFish
+          - JBoss
+          - JSR45Plugin
+          - Osmorc
+          - PerforceDirectPlugin
+          - Resin
+          - Subversion
+          - TestNG-J
+          - WebSphere
+          - Weblogic
+          - com.intellij.appengine
+          - com.intellij.copyright
+          - com.intellij.dmserver
+          - com.intellij.drools
+          - com.intellij.flex
+          - com.intellij.guice
+          - com.intellij.gwt
+          - com.intellij.helidon
+          - com.intellij.jboss.arquillian
+          - com.intellij.jboss.core
+          - com.intellij.jbpm
+          - com.intellij.micronaut
+          - com.intellij.play
+          - com.intellij.quarkus
+          - com.intellij.seam
+          - com.intellij.seam.pageflow
+          - com.intellij.seam.pages
+          - com.intellij.struts2
+          - com.intellij.tapestry
+          - com.intellij.tasks
+          - com.intellij.tasks.timeTracking
+          - com.intellij.uiDesigner
+          - com.jetbrains.plugins.asp
+          - cucumber-groovy
+          - hg4idea
+          - org.coffeescript
+          - org.intellij.grails
+          - org.jetbrains.android
+          - org.jetbrains.idea.eclipse
+          - org.jetbrains.idea.gradle.ext
+          - org.jetbrains.kotlin
+          - org.jetbrains.plugins.gradle
+          - org.jetbrains.plugins.javaFX
+        intellij_plugins:
+          - CheckStyle-IDEA
+          - com.atlassian.bitbucket.references
+          - com.jetbrains.darkPurpleTheme
+          - indent-rainbow.indent-rainbow
+          - io.mateu.lombok-plugin
+          - org.jetbrains.plugins.vue
+          - org.sonarlint.idea
+          - org.zalando.intellij.swagger
+          - sonnenhut.liveedit.patch
+
+# - name: create settings repostitory directory
+#   file: path="{{ intellij_settings_repo_dir }}" state=directory
+
+# - name: clone settings
+#   git:
+#     repo: "{{ intellij_settings_repo_url }}"
+#     dest: "{{ intellij_settings_repo_dir }}/repostitory"
+#     accept_hostkey: yes
+#     update: no
+#   when: (intellij_settings_repo_url is defined) and (intellij_settings_repo_url|length > 0)
+
+- file:
+    path: "{{ intellij_install_dir }}"
+    group: "{{ intellij_group }}"
+    recurse: yes
+    mode: g+rw
+  become: yes
+  register: idea_perm
+
+- shell: "find {{ intellij_install_dir }} -type d -exec chmod g+s '{}' ';'"
+  when: idea_perm.changed

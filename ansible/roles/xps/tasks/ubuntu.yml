@@ -1,0 +1,13 @@
+# https://github.com/JackHack96/dell-xps-9570-ubuntu-respin/blob/master/xps-tweaks.sh
+
+- name: install powertop
+  become: yes
+  apt: name=powertop state=present
+
+
+# powertop --auto-tune on boot
+- include: scripts/power.yml
+- include: scripts/fingerprint.yml
+- include: scripts/hqaudio.yml
+- include: scripts/intel-chip.yml
+- include: scripts/grub.yml

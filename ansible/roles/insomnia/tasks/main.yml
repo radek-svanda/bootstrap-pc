@@ -1,0 +1,11 @@
+
+- name: Download package
+  get_url:
+    url: "{{ insomnia_url }}"
+    dest: "{{ insomnia_local }}"
+
+- name: Extract package
+  unarchive:
+    src: "{{ insomnia_local }}"
+    dest: /opt
+  become: yes

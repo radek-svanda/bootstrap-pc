@@ -1,8 +1,4 @@
 
-- name: install flatpak
-  apt: name=flatpak state=present
-  become: yes
-
 - name: add flathub
   flatpak_remote:
     flatpakrepo_url: "https://flathub.org/repo/flathub.flatpakrepo"
@@ -24,7 +20,7 @@
 - name: install flatpak packages
   flatpak:
     name: "{{ item.name }}"
-    remote: "{{ item.remote.name | default('flathub') }}"
+    remote: "{{ item.remote.name | default(flatpak_remote) }}"
     state: "{{ item.state | default('present') }}"
   with_items: "{{ flatpaks }}"
   when: flatpaks is defined and not item.name in flatpaks_installed.stdout_lines

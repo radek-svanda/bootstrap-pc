@@ -1,0 +1,58 @@
+
+- name: Add neomutt repository
+  get_url:
+    url: "{{ neomut_copr }}"
+    dest: "/etc/yum.repos.d/flatcap-neomutt.repo"
+  become: yes
+
+- name: Install tools
+  import_role: name=ostree-packages
+  vars:
+    packages:
+      - name: notmuch
+      - name: notmuch-mutt
+      - name: neomutt
+      - name: offlineimap
+      - name: ripmime
+      - name: ssmtp
+      - name: w3m
+      # - w3m-img
+
+# offlineimap
+
+#- file:
+#    src: '/home/radek/.dotfiles/.offlineimaprc'
+#    dest: '/home/radek/.offlineimaprc'
+#    state: link
+#
+#- file:
+#    src: '/home/radek/.dotfiles/.offlineimap'
+#    dest: '/home/radek/.offlineimap'
+#    state: link
+#
+#- file: path="{{ item }}" state=directory
+#  with_items:
+#    - "{{ user_config_dir }}/systemd/user"
+#
+#- name: configure offlineimap service
+#  copy: src="{{ item }}" dest="{{ user_config_dir }}/systemd/user/{{ item }}"
+#  with_items:
+#    - offlineimap.service
+#    - offlineimap.timer
+#
+#- name: enable offlineimap service
+#  systemd:
+#    name: offlineimap.timer
+#    enabled: yes
+#    user: yes
+
+# configure notmuch
+
+# contacts + calendar sync
+# pips: vdirsyncer, khal, khard
+
+
+# https://unix.stackexchange.com/questions/37218/how-to-really-easily-save-all-tagged-attachments-in-mutt
+
+# geary:
+# $ curl https://gitlab.gnome.org/GNOME/gnome-keyring/raw/ff229abca62db366c84dfe58035324f6d8ca6059/pkcs11/rpc-layer/gnome-keyring.module.in > ~/.config/pkcs11/modules/gnome-keyring.module

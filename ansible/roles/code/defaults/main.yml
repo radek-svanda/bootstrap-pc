@@ -1,4 +1,2 @@
 vscode_sync_gist_id: ___gist_id___
 vscode_sync_token: ___token___
-vscode_conf: "{{user_config_dir}}/Code/User"
-vscode_extensions: "{{user_home_dir}}/.vscode/extensions"

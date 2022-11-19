@@ -1,0 +1,4 @@
+
+- import_tasks: ../../essentials/tasks/debs.yml
+  vars:
+    debs: "{{ vscode_debs }}"

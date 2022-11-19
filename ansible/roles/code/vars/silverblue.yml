@@ -1,0 +1,4 @@
+
+vscode_conf: "{{user_home_dir}}/.var/app/com.visualstudio.code/config/Code/User"
+vscode_extensions: "{{user_home_dir}}/.var/app/com.visualstudio.code/data/vscode/extensions"
+vscode_launcher: "flatpak run com.visualstudio.code"

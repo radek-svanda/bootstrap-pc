@@ -1,0 +1,5 @@
+- template:
+    src: repo.j2
+    dest: "/etc/yum.repos.d/{{ item.name }}.repo"
+  become: yes
+  with_items: "{{ rpm_repos }}"

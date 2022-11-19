@@ -1,0 +1,8 @@
+
+- name: Update flatpak packages
+  community.general.flatpak:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+    remote: "{{ item.origin | default('flathub') }}"
+  become: yes
+  with_items: "{{ packages }}"

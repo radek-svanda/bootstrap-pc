@@ -1,0 +1,17 @@
+
+- get_url:
+    url: https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-1.24-Update7-setup.tar.bz2
+    dest: "{{ download_dir }}/veracrypt-1.24-Update7-setup.tar.bz2"
+
+- file: 
+    path: /usr/local/share/veracrypt
+    state: directory
+    group: wheel
+    mode: g+rwx
+  become: yes
+
+- unarchive:
+    src: "{{ download_dir }}/veracrypt-1.24-Update7-setup.tar.bz2"
+    dest: "{{ download_dir }}/veracrypt-1.24-Update7-setup"
+
+- shell: "{{ download_dir }}/veracrypt-1.24-Update7-setup/veracrypt-1.24-Update7-setup-gui-x64 --nox11 --target /usr/local/share/veracrypt"

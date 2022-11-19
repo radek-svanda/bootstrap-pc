@@ -1,0 +1,12 @@
+
+- pipx:
+    name:
+      - awscli
+      - awscli-local
+      - aws-mfa
+      - aws-ssm
+      - aws-sam-cli
+      # - sops
+      - git-remote-codecommit
+
+- include_tasks: session-manager-silverblue.yml

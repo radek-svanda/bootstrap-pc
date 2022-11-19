@@ -4,5 +4,13 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"build_systems":
+    [
+        {
+            "name": "Ansible work",
+            "cmd": ["./bootstrap.sh", "work"],
+            "working_dir": "$project_path/ansible"
+        }
+    ]
 }
